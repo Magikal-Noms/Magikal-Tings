@@ -1,5 +1,5 @@
 const User = require('./user');
-const Product = require('./product'); 
+const Product = require('./product');
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -16,9 +16,14 @@ const Product = require('./product');
  *
  */
 
-User.hasMany(Product, { through: 'userItems' });
-Product.belongsToMany(User, { through: 'userItems'}); 
+// User.hasMany(Product, { through: 'userItems' });
+// Product.belongsToMany(User, { through: 'userItems'});
+//hasMany and belongsToMany don't go together
+//User has orders, not products
+//User has many orders
+//order has one User
+//products and orders are many to many
 
 module.exports = {
-  User, Product 
+  User, Product
 }
