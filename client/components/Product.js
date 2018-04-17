@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {fetchProduct} from '../store/singleProduct'
 
 class Product extends Component {
     render() {
@@ -23,6 +24,14 @@ class Product extends Component {
 const mapStateToProps = (state) => {
     return {
         product: state.product
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+      // keys are now on connected components props
+      // addProductFromStore needs to be imported
+        fetchProduct: (id) => { dispatch(fetchProduct(id)) }
     }
 }
 
