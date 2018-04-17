@@ -24,7 +24,7 @@ class Product extends Component {
                 }
             </div>
         );
-    }
+    }b
 }
 
 export default Product;
