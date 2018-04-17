@@ -1,7 +1,7 @@
 {
   "name": "magikalTings",
   "version": "1.0.0",
-  "properties": "Some boilerplate code to get you started - get shakin'!",
+  "description": "Some boilerplate code to get you started - get shakin'!",
   "engines": {
     "node": ">= 7.0.0"
   },
