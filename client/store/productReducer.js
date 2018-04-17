@@ -1,17 +1,37 @@
 import axios  from 'axios';
 
-const GET_PRODUCTS = 'GET_PRODUCTS'
+const GET_PRODUCTS = 'GET_PRODUCTS'; 
+const CREATE_PRODUCT = 'CREATE_PRODUCT'; 
+const UPDATE_PRODUCT = 'UPDATE_PRODUCT'; 
 
 const getProducts = products => {
     return {type: 'GET_PRODUCTS', products}
 }
 
+const createProduct = product => {
+    return { type: 'CREATE_PRODUCT', product}
+}
+
+const updateProduct = product => {
+    return { type: 'UPDATE_PRODUCT', product}
+} 
+
 const productsReducer = function(state = [], action) {
     console.log('reducer log', action.type)
     switch(action.type) {
         case GET_PRODUCTS: 
-        return action.products
-        default: return state
+            return action.products
+
+        case CREATE_PRODUCT: 
+            return [ action.product, ...state]
+        
+        case UPDATE_PRODUCT: 
+            return state.map(product => (
+                action.product.id === product.id ? action.product : product 
+            ))
+        
+        default: 
+            return state
     }
 }
 
@@ -27,5 +47,16 @@ export const fetchProducts = () => {
         }
     }
 
+export const addProduct = product => dispatch => {
+   axios.post('/api/products', product)
+        .then(res => dispatch(createProduct(res.data))) 
+        .catch(err => console.error(`Creating product: ${product} unsuccessful`, err))
+}
+
+export const updateProduct = (id, updatedProduct) => dispatch => {
+   axios.put(`/api/products/${id}`, updatedProduct)
+    .then(res => dispatch(updateProduct(res.data)))
+    .catch(err => console.error(`Updating product ${product}`))
+}
 
 export default productsReducer
