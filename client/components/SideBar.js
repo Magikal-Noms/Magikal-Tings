@@ -5,9 +5,10 @@ import {fetchProducts} from '../store/fetchProducts'
 import _ from 'lodash';
 
 export class SideBar extends Component {
-  // componentDidMount(){
-  //   this.props.fetchProducts();
-  // }
+
+
+  //onCLick of that component will take teh handleClick
+
   render() {
     console.log("PROPS", this.props)
     console.log("lodash", _)
@@ -19,7 +20,7 @@ export class SideBar extends Component {
         {
          categories.map(item => {
             return (
-              <li key={item}>{item}</li>
+              <li key={item} onClick={this.props.handleClick}>{item}</li>
               )
           })
         }
@@ -34,12 +35,5 @@ const mapStateToProps = (state, ownProps) => {
     products: ownProps.products
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     fetchProducts: () => { dispatch(fetchProducts())}
-//   }
-// }
-
 
 export default connect(mapStateToProps)(SideBar);
