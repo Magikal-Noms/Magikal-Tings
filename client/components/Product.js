@@ -2,8 +2,14 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { fetchProduct } from '../store/singleProduct';
+
 class Product extends Component {
+    componentDidMount() {
+        this.props.fetchProduct()
+    }
     render() {
+        console.log('prop', this.props)
       const product = this.props.product
         return (
             <div>
@@ -26,5 +32,11 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Product)
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        fetchProduct: () => { dispatch(fetchProduct(+ownProps.match.params.productId))}
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
 
