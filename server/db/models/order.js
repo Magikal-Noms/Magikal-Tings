@@ -5,7 +5,7 @@ const db = require('../db')
 const Order = db.define('order', {
   shippingAddress: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false // not empty?? -- KHSG
   },
   billingAddress: {
     type: Sequelize.STRING, 

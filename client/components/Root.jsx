@@ -14,7 +14,7 @@ import { fetchProduct } from '../store/fetchSingleProduct';
 
           const productsThunk = fetchProducts();
 
-          store.dispatch(productsThunk)
+          store.dispatch(productsThunk) // you use react-redux in other files, so ??? -- KHSG
 
       }
       render() {

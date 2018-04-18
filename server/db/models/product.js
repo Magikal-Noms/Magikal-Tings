@@ -8,7 +8,7 @@ const Product = db.define('product', {
     allowNull: false
   },
   price: {
-    type: Sequelize.INTEGER, 
+    type: Sequelize.INTEGER, // consider DECIMAL(10,2), but stick with what you have because you have it -- KHSG
     allowNull: false, 
     validate: { 
         min: 0
@@ -20,9 +20,9 @@ const Product = db.define('product', {
     } 
   },
   properties: {
-    type: Sequelize.TEXT 
+    type: Sequelize.TEXT // connotates non-searchable. use string if you want that -- KHSG
   }, 
-  category: {
+  category: { // search by category?? normalize and reduce redundant and corrupt data with a new table. Crys! -- KHSG
       type: Sequelize.STRING 
   }, 
   picture: {
@@ -31,9 +31,9 @@ const Product = db.define('product', {
   }
 })
 
-Product.getProductByType = function(searchType) {
+Product.getProductByType = function(searchType) { // delete me -- KHSG
     return Product.findAll({ where: {
-        type: searchType
+        type: searchType // this would be category anyways
     }}); 
 }
 
