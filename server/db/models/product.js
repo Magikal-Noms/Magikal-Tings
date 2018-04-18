@@ -34,7 +34,7 @@ const Product = db.define('product', {
 Product.getProductByType = function(searchType) {
     return Product.findAll({ where: {
         type: searchType
-    }}); 
+    }});  
 }
 
 
