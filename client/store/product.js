@@ -55,7 +55,7 @@ export const addProduct = product => dispatch => {
 
 export const updateProduct = (id, updatedProduct) => dispatch => {
    axios.put(`/api/products/${id}`, updatedProduct)
-    .then(res => dispatch(updateProduct(res.data)))
+    .then(res => dispatch(update(res.data)))
     .catch(err => console.error(`Updating product ${product}`))
 }
 
