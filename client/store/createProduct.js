@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+// add to products.js (store) -- KHSG
+
 const CREATE_PRODUCT = 'CREATE_PRODUCT'
 
 const create = product => {
