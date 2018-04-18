@@ -3,17 +3,15 @@ import {
   } from 'react-router-dom';
 import React, { Component } from 'react';
 import store from '../store'
-import AllProducts from './allProducts';
-import Product from './Product';
-import AddProduct from './productForm';
+import AllProducts from './AllProducts';
+import Product from './Product'; //Single Product 
+import AddProduct from './NewProductForm';
 import { fetchProducts } from '../store/fetchProducts';
-import { fetchProduct } from '../store/fetchSingleProduct';
 
   class MainPage extends Component {
       componentDidMount () {
-
+        //ask what this is doing-- specifically why aren't we connecting to the store/why do we do store.dispatch? 
           const productsThunk = fetchProducts();
-
           store.dispatch(productsThunk)
 
       }

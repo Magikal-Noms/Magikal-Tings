@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addProduct } from '../store/productReducer'; //or wherever the thunk is going to be coming from 
+import { Link } from 'react-router-dom';
+import { addProduct } from '../store/createProduct'; //or wherever the thunk is going to be coming from 
 
 class NewProductForm extends Component { 
    constructor() {
@@ -19,6 +20,7 @@ class NewProductForm extends Component {
    handleSubmit (evt) {
        evt.preventDefault();
        const newProduct = this.state; 
+       console.log('current state~', newProduct); 
        this.props.addProduct(newProduct); 
 
        //reset values 
@@ -32,6 +34,7 @@ class NewProductForm extends Component {
    }
 
    render() {
+       console.log('OWNPROPS', this); 
     return (
         <div> 
             <form onSubmit={this.handleSubmit} > 
@@ -102,13 +105,7 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch => {
-    return { 
-        addProduct(product) {
-            dispatch(addProduct(product)); 
-        }
-    }
-}
+const mapDispatchToProps = { addProduct }
 
 const newProductContainer = connect(mapStateToProps, mapDispatchToProps)(NewProductForm); 
 export default newProductContainer; 
