@@ -6,6 +6,7 @@ import store from '../store'
 
 import AllProducts from './allProducts';
 import Product from './Product';
+import AddProduct from './productForm';
 
 import { fetchProducts } from '../store/productReducer';
 import { fetchProduct } from '../store/singleProduct';
@@ -25,6 +26,7 @@ import { fetchProduct } from '../store/singleProduct';
               <div>
                   <Switch>
                     <Route exact path='/products' component={AllProducts} />
+                    <Route exact path='/products/addProduct' component={AddProduct} />
                     <Route exact path='/products/:productId' component={Product} />
                   </Switch>
               </div>

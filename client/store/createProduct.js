@@ -14,7 +14,9 @@ const createReducer = function(state= [], action ) {
     }
 }
 export const addProduct = product => dispatch => {
-    axios.post('/api/products', product)
+    axios.post('/api/products/addProduct', product)
          .then(res => dispatch(create(res.data)))
          .catch(err => console.error(`Creating product: ${product} unsuccessful`, err))
  }
+
+ export default createReducer

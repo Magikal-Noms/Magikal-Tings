@@ -9,7 +9,7 @@ class Product extends Component {
         this.props.fetchProduct()
     }
     render() {
-        console.log('prop', this.props)
+        // console.log('prop', this.props)
       const product = this.props.product
         return (
             <div>
