@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import {fetchProduct} from '../store/singleProduct'
 
 import { fetchProduct } from '../store/fetchSingleProduct';
 
@@ -35,6 +36,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchProduct: () => { dispatch(fetchProduct(+ownProps.match.params.productId))}
+      // keys are now on connected components props
+      // addProductFromStore needs to be imported
     }
 }
 

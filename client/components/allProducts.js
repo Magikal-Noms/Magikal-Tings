@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-
-class AllProducts extends Component { 
+class AllProducts extends Component {
     constructor() {
         super();
         this.state = {
@@ -13,8 +12,8 @@ class AllProducts extends Component {
     }
 
     handleChange (event) {
-
     }
+
     render() {
 
         console.log('props', this.props.products)
@@ -33,7 +32,7 @@ class AllProducts extends Component {
                             </div>
                         )
                     })
-               } 
+               }
             </div>
         );
     }
