@@ -18,9 +18,10 @@ const Order = require('./order');
 
 User.hasMany(Order);
 Order.belongsTo(User);
-Order.belongsToMany(Product, { through: 'line-order'});
+Order.belongsToMany(Product, { through: 'line-order'}); // consider making this table becuase you need to store quantity and sales price of each product. Maybe have Crys do this one instead -- KHSG
 Product.belongsToMany(Order, { through: 'line-order'}); 
 
 module.exports = {
-  User, Product
+  User, 
+  Product // new line for this -- kHSG
 }
