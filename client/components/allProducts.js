@@ -1,25 +1,26 @@
-import store from '../store'
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {SideBar} from './SideBar'
 
 class AllProducts extends Component {
-    constructor() {
-        super();
-        this.state = {
-            products: [],
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         products: this.props.products
+    //     };
+    //     console.log("string", this.props.products)
+    // }
 
     handleChange (event) {
     }
 
     render() {
-
-        console.log('props', this.props.products)
+      console.log('PROPS IN ALLPRODUCTS', this.props.products)
         return (
 
             <div>
+              <SideBar products={this.props.products}/>
                {
                     this.props.products.map(product => {
                         return (
