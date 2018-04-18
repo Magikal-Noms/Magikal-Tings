@@ -11,13 +11,13 @@ import { fetchProducts } from '../store/fetchProducts';
   class MainPage extends Component {
       componentDidMount () {
         //ask what this is doing-- specifically why aren't we connecting to the store/why do we do store.dispatch? 
-          const productsThunk = fetchProducts();
+          const productsThunk = fetchProducts(); // should have all of our products because this is the main component mounted -- KHSG
           store.dispatch(productsThunk)
 
       }
       render() {
           return (
-              <BrowserRouter>
+              <BrowserRouter> {/* you already have a router. Remove -- KHSG*/}
               <div>
                   <Switch>
                     <Route exact path='/products' component={AllProducts} />

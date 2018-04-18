@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import {SideBar} from './SideBar'
 
 class AllProducts extends Component {
-    // constructor(props) {
+    // constructor(props) { // remove -- KHSG
     //     super(props);
     //     this.state = {
     //         products: this.props.products
@@ -24,13 +24,14 @@ class AllProducts extends Component {
                {
                     this.props.products.map(product => {
                         return (
-                            <div key = {product.id}>
-                            <h1 className='product-title'> {product.name} </h1>
-                            <img className='media-object' src={product.picture}/>
-                            <h2 className='product-price'> Price: {product.price} </h2>
-                            <Link to={`/products/${product.id}`}> <button> {product.name} </button>
+                            <Link to={`/products/${product.id}`}>
+                                <div key = {product.id}>
+                                    <h1 className='product-title'> {product.name} </h1>
+                                    <img className='media-object' src={product.picture}/>
+                                    <h2 className='product-price'> Price: {product.price} </h2>
+                                    <button> {product.name} </button>
+                                </div>
                             </Link>
-                            </div>
                         )
                     })
                }
@@ -43,6 +44,8 @@ const mapStateToProps = (state) => {
         products: state.products
     }
 }
+
+// const mapStateToProps = ({products}) => ({products}) // alternate to the above -- KHSG
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         fetchProduct

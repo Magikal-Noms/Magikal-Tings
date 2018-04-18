@@ -1,3 +1,6 @@
+// remove this
+    // only see it being beneficial to go across the internet again is if you have products that are being updated often -- KHSG
+
 import axios  from 'axios';
 
 const GET_PRODUCT = 'GET_PRODUCT'

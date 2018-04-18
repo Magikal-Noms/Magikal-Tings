@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addProduct } from '../store/createProduct'; //or wherever the thunk is going to be coming from 
+import { addProduct } from '../store'; //or wherever the thunk is going to be coming from 
 
 class NewProductForm extends Component { 
    constructor() {
       super(); 
-      this.state = {
+      this.state = this.props.product || { // if you do this, probably you can ignore the comments in the other file of removing onChange. Then merge edit OR add (routes distinct so url is descriptive, but use this one component) -- KHSG
           productName: '', 
           price: '', 
           properties: '', 
@@ -88,7 +88,7 @@ class NewProductForm extends Component {
                     value={this.state.picture}
                     placeholder="Enter an image URL"
                     onChange={ evt => this.setState( { picture : evt.target.value })}
-                /> 
+                />
                 </div> 
                 <button type="submit">Submit</button> 
                 </form> 
@@ -105,7 +105,7 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = { addProduct }
+const mapDispatchToProps = { addProduct } // either do them all like this or not -- KHSG
 
 const newProductContainer = connect(mapStateToProps, mapDispatchToProps)(NewProductForm); 
 export default newProductContainer; 

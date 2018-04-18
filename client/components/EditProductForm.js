@@ -16,12 +16,14 @@ class EditProductForm extends Component {
       this.handleSubmit = this.handleSubmit.bind(this); 
    }
 
-   handleSubmit (evt) {
+   handleSubmit (evt) { // consider just making this an arrow function so you don't have to bind -- KHSG
        evt.preventDefault();
+       // instead of holding on state just pull off of evt when clicked
+       // const newProduct = {productName : evt.target.productName.value} -- KHSG
        const newProduct = this.state; 
        const id = this.props.match.params.id; //check on this 
        this.props.updateProduct(id, newProduct); 
-
+       // if we push to history we don't have to reset the form -- KHSG
        //reset values 
        this.setState({ 
            productName: '', 
@@ -43,9 +45,9 @@ class EditProductForm extends Component {
                 <input
                     name="productName"
                     type="text"
-                    value={this.state.productName}
+                    // value={this.state.productName}
                     placeholder="Enter a product name"
-                    onChange={evt => this.setState( { productName : evt.target.value })} 
+                    // onChange={evt => this.setState( { productName : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -104,7 +106,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    const id = +ownProps.match.params.id; 
+    const id = +ownProps.match.params.id; // seems redundant -- KHSG 
 
     return { 
         updateProduct(id, newProduct) {
