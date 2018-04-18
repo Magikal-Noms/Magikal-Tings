@@ -4,12 +4,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 
-class AllProducts extends Component {
+class AllProducts extends Component { 
+    constructor() {
+        super();
+        this.state = {
+            products: [],
+        };
+    }
 
+    handleChange (event) {
+
+    }
     render() {
 
-        console.log('store', this.props)
+        console.log('props', this.props.products)
         return (
+
             <div>
                {
                     this.props.products.map(product => {
@@ -33,6 +43,10 @@ const mapStateToProps = (state) => {
         products: state.products
     }
 }
-
+// const mapDispatchToProps = (dispatch) => {
+//     return {
+//         fetchProduct
+//     }
+// }
 export default connect(mapStateToProps)(AllProducts)
 // export default AllProducts;

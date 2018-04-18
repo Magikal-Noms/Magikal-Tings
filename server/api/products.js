@@ -17,7 +17,7 @@ router.get('/:productId', (req, res, next) => {
   .catch(next)
 })
 
-router.post('/', (req, res, next) => {
+router.post('/addProduct', (req, res, next) => {
   Product.create(req.body)
   .then(createdProduct => res.status(201).json(createdProduct))
   .catch(next)

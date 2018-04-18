@@ -50,5 +50,5 @@ describe('Product routes', () => {
         })
     })
 
-  }) // end describe('User routes')
+  }) // end describe('Product routes')
 })
