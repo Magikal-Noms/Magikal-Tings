@@ -7,7 +7,7 @@ const getProducts = products => {
 }
 
 const productsReducer = function(state = [], action) {
-    console.log('reducer log', action.type)
+    
     switch(action.type) {
         case GET_PRODUCTS: 
         return action.products
@@ -16,7 +16,7 @@ const productsReducer = function(state = [], action) {
 }
 
 export const fetchProducts = () => {
-    console.log('run')
+    
     return function thunk (dispatch) {
         return axios.get ('/api/products')
         .then(res => res.data)
