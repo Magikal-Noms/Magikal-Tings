@@ -27,13 +27,13 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
     return {
       // keys are now on connected components props
       // addProductFromStore needs to be imported
-        fetchProduct: (id) => { dispatch(fetchProduct(id)) }
+        fetchProduct: (id) => { dispatch(fetchProduct(+ownProps.match.params.productId)) }
     }
 }
 
-export default connect(mapStateToProps)(Product)
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
 

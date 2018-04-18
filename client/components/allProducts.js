@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 
 
 class AllProducts extends Component {
+  constructor(){
+    super()
+    this.state =
+  }
 
     render() {
 
@@ -23,7 +27,7 @@ class AllProducts extends Component {
                             </div>
                         )
                     })
-               } 
+               }
             </div>
         );
     }
