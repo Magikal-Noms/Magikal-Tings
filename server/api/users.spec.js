@@ -8,7 +8,9 @@ const User = db.model('user')
 
 describe('User routes', () => {
   beforeEach(() => {
-    return db.sync({force: true})
+    return db.sync({
+      force: true
+    })
   })
 
   describe('/api/users/', () => {

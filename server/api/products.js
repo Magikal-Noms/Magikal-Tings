@@ -10,28 +10,31 @@ router.get('/', (req, res, next) => {
 
 router.get('/:productId', (req, res, next) => {
   Product.findById(+req.params.productId)
-  .then(foundProduct => {
-    if (!foundProduct) return res.status(404).send('No such product found')
-    res.json(foundProduct)
-  })
-  .catch(next)
+    .then(foundProduct => {
+      if (!foundProduct) return res.status(404).send('No such product found')
+      res.json(foundProduct)
+    })
+    .catch(next)
 })
 
 router.post('/addProduct', (req, res, next) => {
   Product.create(req.body)
-  .then(createdProduct => res.status(201).json(createdProduct))
-  .catch(next)
+    .then(createdProduct => res.status(201).json(createdProduct))
+    .catch(next)
 })
 
 router.delete('/:productId', (req, res, next) => {
-  Product.destroy({where: {id: +req.params.productId}})
-  .then(() => res.sendStatus(204))
-  .catch(next)
+  Product.destroy({
+      where: {
+        id: +req.params.productId
+      }
+    })
+    .then(() => res.sendStatus(204))
+    .catch(next)
 })
 
 router.put('/:productId', (req, res, next) => {
-  Product.update(req.body,
-    {
+  Product.update(req.body, {
       where: {
         id: +req.params.productId
       },

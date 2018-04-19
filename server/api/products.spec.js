@@ -8,7 +8,9 @@ const Product = db.model('product')
 
 describe('Product routes', () => {
   beforeEach(() => {
-    return db.sync({force: true})
+    return db.sync({
+      force: true
+    })
   })
 
   describe('GET /api/products/', () => {
@@ -31,14 +33,14 @@ describe('Product routes', () => {
     })
   }) // end describe('/api/users')
 
-    describe('GET /products/:productId', function () {
-      beforeEach(() => {
-        return Product.create({
-          id: 15,
-          name: "Some Item",
-          price: "2.99"
-        })
+  describe('GET /products/:productId', function() {
+    beforeEach(() => {
+      return Product.create({
+        id: 15,
+        name: "Some Item",
+        price: "2.99"
       })
+    })
 
     it('GET /api/products/:productId', () => {
       return request(app)
