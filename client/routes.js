@@ -24,9 +24,10 @@ class Routes extends Component {
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path='/products' component={AllProducts} />
+        <Route exact path='/products/editproduct' component={EditProductForm} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
-        <Route exact path='/products/addProduct' component={NewProductForm} />
+        <Route exact path='/products/addproduct' component={NewProductForm} />
         <Route exact path='/products/:productId' component={Product} />
         {
           isLoggedIn &&
