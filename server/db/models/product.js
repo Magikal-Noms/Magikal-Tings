@@ -19,8 +19,12 @@ const Product = db.define('product', {
       return '$' + this.getDataValue('price') / 100;
     }
   },
+  //this is our version of "description", short for "metaphysical properties"
   properties: {
     type: Sequelize.TEXT
+  },
+  quantity: {
+    type: Sequelize.INTEGER
   },
   category: {
     type: Sequelize.STRING
@@ -30,13 +34,5 @@ const Product = db.define('product', {
     defaultValue: 'https://i.pinimg.com/originals/d7/d5/d8/d7d5d8696a558172808274b154936db7.jpg'
   }
 })
-
-Product.getProductByType = function(searchType) {
-  return Product.findAll({
-    where: {
-      type: searchType
-    }
-  });
-}
 
 module.exports = Product;
