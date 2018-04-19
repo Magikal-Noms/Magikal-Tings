@@ -10,7 +10,11 @@
  * Now that you've got the main idea, check it out in practice below!
  */
 const db = require('../server/db')
-const {User, Product} = require('../server/db/models')
+const {
+  User,
+  Product,
+  Category
+} = require('../server/db/models')
 
 async function seed() {
   await db.sync({
@@ -39,69 +43,92 @@ async function seed() {
     }),
   ])
 
+  const categories = await Promise.all([
+    Category.create({
+      id: 1,
+      name: "stones/crystals"
+    }),
+    Category.create({
+      id: 2,
+      name: "jewelry"
+    }),
+    Category.create({
+      id: 3,
+      name: "oils"
+    }),
+    Category.create({
+      id: 4,
+      name: "magickal-tools"
+    }),
+    Category.create({
+      id: 5,
+      name: "religious"
+    })
+  ])
+
   const products = await Promise.all([
     Product.create({
       name: "Rose Quartz",
       price: 4.80,
       properties: "Rose Quartz is calming and nurturing, " +
         "balances emotions, heal emotional wounds, and rejuvenates the skin.",
-      category: "stones/crystals",
+      categoryId: 1,
       picture: "https://images-na.ssl-images-amazon.com/images/I/51JyG-6buhL._SL1000_.jpg"
     }),
     Product.create({
       name: "Shungite",
       price: 9.82,
+      categoryId: 1,
       properties: "Shungite absorbs negative energies and moves" +
         "them away from the body.  It also purifies water and works to nullify the effects of radiation.",
-      category: "stones/crystals",
       picture: "https://images-na.ssl-images-amazon.com/images/I/81Mm5WPsuQL._SL1500_.jpg"
     }),
     Product.create({
       name: "Sodalite Necklace",
+      categoryId: 2,
       price: 17.00,
       properties: "Beautiful sodalite necklace.  Great for " +
         "intuition, sixth sense, harmony, balance, inspiration, and creativity.",
-      category: "jewelry",
       picture: "https://images-na.ssl-images-amazon.com/images/I/71DjbzpaLZL._SL1500_.jpg"
     }),
     Product.create({
       name: "Clary Sage Oil",
       price: 35.55,
+      categoryId: 3,
       properties: "With uses dating back to the Middle Ages, " +
         "Clary Sage essential oil includes relaxing and soothing properties that help with rejuvenation and calming of " +
         "the skin.",
-      category: "oils",
       picture: "https://images-na.ssl-images-amazon.com/images/I/616FV3bDykL._SL1500_.jpg"
     }),
     Product.create({
       name: "Cast Iron Cauldron With Handle",
+      categoryId: 4,
       price: 8.99,
       properties: "ideal for smudging, " +
         "incense burning, rituals, decoration, or candles.  4\" Diameter Handle to Handle, 2.5\" Inside Diameter",
-      category: "magickal-tools",
       picture: "https://images-na.ssl-images-amazon.com/images/I/31y7GCNmu9L.jpg"
     }),
     Product.create({
       name: "Triple Goddess Statue",
       price: 99.95,
+      categoryId: 5,
       properties: "11 1/4 inch hand-crafted resin statue " +
         "made from artisans in India",
-      category: "religious",
       picture: "https://images-na.ssl-images-amazon.com/images/I/61zH%2BD1BixL._SL1000_.jpg"
     }),
     Product.create({
       name: "Pentacle",
+      categoryId: 2,
       price: 7.30,
       properties: "Pentacle made of natural soapstone.  " +
         "Measures approximately 3 inches in diameter.",
-      category: "religious",
       picture: "https://images-na.ssl-images-amazon.com/images/I/713qqf--XXL._SL1491_.jpg"
     }),
     Product.create({
       name: "Tree of Life Pentacle Necklace",
+      categoryId: 5,
       price: 26.99,
       properties: "",
-      category: "jewelry",
       picture: "https://images-na.ssl-images-amazon.com/images/I/61Yx0IUrN3L._UY575_.jpg"
     }),
   ])

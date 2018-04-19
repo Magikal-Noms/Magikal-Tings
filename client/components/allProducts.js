@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { SideBar } from "./SideBar";
+import { Sidebar } from "./Sidebar";
 
+//sidebar was taken out, see in
 class AllProducts extends Component {
   render() {
     let products = this.props.products;
     return (
       <div>
-        <SideBar products={this.props.products} />
         {products.map(product => {
           return (
             <div key={product.id}>

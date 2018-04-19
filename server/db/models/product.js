@@ -26,9 +26,6 @@ const Product = db.define('product', {
   quantity: {
     type: Sequelize.INTEGER
   },
-  category: {
-    type: Sequelize.STRING
-  },
   picture: {
     type: Sequelize.STRING,
     defaultValue: 'https://i.pinimg.com/originals/d7/d5/d8/d7d5d8696a558172808274b154936db7.jpg'
