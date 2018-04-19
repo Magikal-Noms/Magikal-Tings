@@ -46,6 +46,6 @@ router.put('/:productId', (req, res, next) => {
       },
       returning: true
     })
-    .then(product => res.status(201).json(product[1][0]))
+    .then(([rows, [product]]) => res.json(product))
     .catch(next)
 })
