@@ -5,8 +5,9 @@ import React, { Component } from 'react';
 import store from '../store'
 import AllProducts from './AllProducts';
 import Product from './Product'; //Single Product 
+import EditProduct from './EditProductForm'; 
 import AddProduct from './NewProductForm';
-import { fetchProducts } from '../store/fetchProducts';
+import { fetchProducts } from '../store/products';
 
   class MainPage extends Component {
       componentDidMount () {
@@ -21,6 +22,7 @@ import { fetchProducts } from '../store/fetchProducts';
               <div>
                   <Switch>
                     <Route exact path='/products' component={AllProducts} />
+                    <Route exact path='/products/editProduct' component={EditProduct} /> 
                     <Route exact path='/products/addProduct' component={AddProduct} />
                     <Route exact path='/products/:productId' component={Product} />
                   </Switch>

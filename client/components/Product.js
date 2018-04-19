@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+
+// import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProduct } from '../store/fetchSingleProduct';
+// import { fetchProduct } from '../store/products';
+
 
 class Product extends Component {
-    componentDidMount() {
-        this.props.fetchProduct()
-    }
+  
     render() {
-        // console.log('prop', this.props)
+        console.log('prop', this.props)
       const product = this.props.product
         return (
             <div>
@@ -25,19 +25,20 @@ class Product extends Component {
  }
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        product: state.product
+        products: state.products
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-        fetchProduct: () => { dispatch(fetchProduct(+ownProps.match.params.productId))}
-      // keys are now on connected components props
-      // addProductFromStore needs to be imported
+    return { 
+        fetchSingleProduct: function() {
+            const productId = ownProps.match.params.id;
+            dispatch()
+        }
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product)
+export default connect(null)(Product)
 

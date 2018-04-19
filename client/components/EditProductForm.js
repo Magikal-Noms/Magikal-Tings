@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateProduct } from '../store/productReducer'; 
+import { Link } from 'react-router-dom';
+import { editProduct } from '../store/products'; 
 
 class EditProductForm extends Component { 
-   constructor() {
-      super(); 
+   constructor(props) {
+      super(props); 
       this.state = {
+          id: '',
           productName: '', 
           price: '', 
           properties: '', 
@@ -18,9 +20,17 @@ class EditProductForm extends Component {
 
    handleSubmit (evt) {
        evt.preventDefault();
-       const newProduct = this.state; 
-       const id = this.props.match.params.id; //check on this 
-       this.props.updateProduct(id, newProduct); 
+       const id = +evt.target.id.value; 
+
+       const newProduct = {
+            name: evt.target.productName.value, 
+            price: evt.target.price.value, 
+            properties: evt.target.properties.value, 
+            category: evt.target.category.value, 
+            picture: evt.target.picture.value 
+        };
+
+       this.props.editProduct(id, newProduct); 
 
        //reset values 
        this.setState({ 
@@ -33,19 +43,23 @@ class EditProductForm extends Component {
    }
 
    render() {
+       
     return (
         <div> 
             <form onSubmit={this.handleSubmit} > 
 
-                <h1>Add a Product</h1> 
+                <h1>Edit a Product</h1> 
 
                 <div> 
                 <input
                     name="productName"
                     type="text"
-                    value={this.state.productName}
                     placeholder="Enter a product name"
-                    onChange={evt => this.setState( { productName : evt.target.value })} 
+                /> 
+                <input 
+                    name="id"
+                    type="number"
+                    placeholder="Enter an id"
                 /> 
                 </div> 
 
@@ -53,9 +67,7 @@ class EditProductForm extends Component {
                 <input
                     name="price" 
                     type="number"
-                    value={this.state.price}
                     placeholder="Enter a price as an integer"
-                    onChange={evt => this.setState( { price : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -63,9 +75,7 @@ class EditProductForm extends Component {
                 <input
                     name="properties" 
                     type="text"
-                    value={this.state.properties}
                     placeholder="Enter properties"
-                    onChange={evt => this.setState( { properties : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -73,9 +83,7 @@ class EditProductForm extends Component {
                 <input 
                     name= "category"
                     type="text"
-                    value={this.state.category}
                     placeholder="Enter a category name"
-                    onChange={evt => this.setState( { category : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -83,35 +91,17 @@ class EditProductForm extends Component {
                 <input 
                     name="picture"
                     type="text"
-                    value={this.state.picture}
                     placeholder="Enter an image URL"
-                    onChange={ evt => this.setState( { picture : evt.target.value })}
                 /> 
                 </div> 
                 <button type="submit">Submit</button> 
                 </form> 
-
                 <Link to="/products">Return to All Products</Link>  
             </div> 
     )
    }
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return { 
-        products: state.products 
-    }
-}
+const mapDispatchToProps = { editProduct }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-    const id = +ownProps.match.params.id; 
-
-    return { 
-        updateProduct(id, newProduct) {
-            dispatch(updateProduct(id, newProduct)); 
-        }
-    }
-}
-
-const editProductContainer = connect(mapStateToProps, mapDispatchToProps)(EditProductForm); 
-export default editProductContainer; 
+export default connect(null, mapDispatchToProps)(EditProductForm); 
