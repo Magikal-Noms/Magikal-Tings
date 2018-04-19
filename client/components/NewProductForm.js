@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addProduct } from '../store/products'; //or wherever the thunk is going to be coming from 
-
+import { addProduct } from '../store/productsReducer'; //or wherever the thunk is going to be coming from 
 
 class NewProductForm extends Component { 
    constructor(props) {
