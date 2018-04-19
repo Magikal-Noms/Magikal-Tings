@@ -8,10 +8,16 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+function throwError(status, msg){
+  const err = new Error(msg)
+  err.status = status
+  throw err;
+}
+
 router.get('/:productId', (req, res, next) => {
   Product.findById(+req.params.productId)
     .then(foundProduct => {
-      if (!foundProduct) return res.status(404).send('No such product found')
+      if (!foundProduct) throwError(404, 'No such product')
       res.json(foundProduct)
     })
     .catch(next)
