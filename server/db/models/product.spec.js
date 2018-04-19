@@ -4,9 +4,11 @@ const {expect} = require('chai')
 const db = require('../index')
 const User = db.model('user')
 
-xdescribe('Product model', () => {
+describe('Product model', () => {
   beforeEach(() => {
-    return db.sync({force: true})
+    return db.sync({
+      force: true
+    })
   })
 
   describe('instanceMethods', () => {
@@ -15,9 +17,9 @@ xdescribe('Product model', () => {
 
       beforeEach(() => {
         return User.create({
-          email: 'cody@puppybook.com',
-          password: 'bones'
-        })
+            email: 'cody@puppybook.com',
+            password: 'bones'
+          })
           .then(user => {
             cody = user
           })

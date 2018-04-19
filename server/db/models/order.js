@@ -8,13 +8,13 @@ const Order = db.define('order', {
     allowNull: false
   },
   billingAddress: {
-    type: Sequelize.STRING, 
-    allowNull: false, 
+    type: Sequelize.STRING,
+    allowNull: false,
   },
   status: {
-      type: Sequelize.ENUM('complete', 'pending') 
+    type: Sequelize.ENUM('complete', 'pending')
   }
 })
 
 
-module.exports = Order; 
+module.exports = Order;
