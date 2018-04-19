@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { updateProduct } from "../store/productsReducer";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { editProduct } from '../store/productsReducer'; 
 
 class EditProductForm extends Component {
   constructor(props) {
@@ -96,6 +96,6 @@ class EditProductForm extends Component {
   }
 }
 
-const mapDispatchToProps = { updateProduct };
+const mapDispatchToProps = { editProduct }
 
 export default connect(null, mapDispatchToProps)(EditProductForm);
