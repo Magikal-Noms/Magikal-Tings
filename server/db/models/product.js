@@ -19,8 +19,12 @@ const Product = db.define('product', {
       return '$' + this.getDataValue('price') / 100;
     }
   },
+  //this is our version of "description", short for "metaphysical properties"
   properties: {
     type: Sequelize.TEXT
+  },
+  quantity: {
+    type: Sequelize.INTEGER
   },
   category: {
     type: Sequelize.STRING
