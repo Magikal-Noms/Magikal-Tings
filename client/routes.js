@@ -2,25 +2,32 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome} from './components'
+import {Login, Signup, UserHome, AllProducts, Product, NewProductForm, EditProductForm, Sidebar, Navbar} from './components'
 import {me} from './store'
-
+import store from './store'
+import { fetchProducts } from './store/productsReducer';
 /**
  * COMPONENT
  */
 class Routes extends Component {
   componentDidMount () {
     this.props.loadInitialData()
+    
+    const productsThunk = fetchProducts();
+    store.dispatch(productsThunk)
   }
 
   render () {
     const {isLoggedIn} = this.props
-
+    console.log('products', AllProducts)
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
-        <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route exact path='/products' component={AllProducts} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/signup" component={Signup} />
+        <Route exact path='/products/addProduct' component={NewProductForm} />
+        <Route exact path='/products/:productId' component={Product} />
         {
           isLoggedIn &&
             <Switch>
@@ -29,13 +36,13 @@ class Routes extends Component {
             </Switch>
         }
         {/* Displays our Login component as a fallback */}
-        <Route component={Login} />
-      </Switch>
-    )
+        </Switch>
+      )
+    }
   }
-}
-
-/**
+  
+  /**
+   <Route component={Login} />
  * CONTAINER
  */
 const mapState = (state) => {

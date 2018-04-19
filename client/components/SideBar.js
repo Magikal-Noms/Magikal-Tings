@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {fetchProducts} from '../store/fetchProducts'
+import {fetchProducts} from '../store/productsReducer'
 import _ from 'lodash';
 
-export class SideBar extends Component {
+export class Sidebar extends Component {
   // componentDidMount(){
   //   this.props.fetchProducts();
   // }
   render() {
-    console.log("PROPS", this.props)
-    console.log("lodash", _)
     const categories =  _.uniq(this.props.products.map(product => product.category))
 
     return (
@@ -42,4 +40,4 @@ const mapStateToProps = (state, ownProps) => {
 // }
 
 
-export default connect(mapStateToProps)(SideBar);
+export default connect(mapStateToProps)(Sidebar);

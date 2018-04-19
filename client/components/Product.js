@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { fetchProduct } from '../store/fetchSingleProduct';
-
 class Product extends Component {
    
     render() {
