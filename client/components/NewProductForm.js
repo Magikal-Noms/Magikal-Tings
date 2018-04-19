@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { addProduct } from '../store/productsReducer'; //or wherever the thunk is going to be coming from 
 
 class NewProductForm extends Component { 
-   constructor() {
-      super(); 
+   constructor(props) {
+      super(props); 
       this.state = {
           productName: '', 
           price: '', 
@@ -19,8 +19,15 @@ class NewProductForm extends Component {
 
    handleSubmit (evt) {
        evt.preventDefault();
-       const newProduct = this.state; 
-       console.log('current state~', newProduct); 
+
+       const newProduct = {
+            name: evt.target.productName.value, 
+            price: evt.target.price.value, 
+            properties: evt.target.properties.value, 
+            category: evt.target.category.value, 
+            picture: evt.target.picture.value 
+       };
+
        this.props.addProduct(newProduct); 
 
        //reset values 
@@ -34,7 +41,7 @@ class NewProductForm extends Component {
    }
 
    render() {
-       console.log('OWNPROPS', this); 
+    
     return (
         <div> 
             <form onSubmit={this.handleSubmit} > 
@@ -45,9 +52,7 @@ class NewProductForm extends Component {
                 <input
                     name="productName"
                     type="text"
-                    value={this.state.productName}
                     placeholder="Enter a product name"
-                    onChange={evt => this.setState( { productName : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -55,9 +60,7 @@ class NewProductForm extends Component {
                 <input
                     name="price" 
                     type="number"
-                    value={this.state.price}
                     placeholder="Enter a price as an integer"
-                    onChange={evt => this.setState( { price : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -65,9 +68,7 @@ class NewProductForm extends Component {
                 <input
                     name="properties" 
                     type="text"
-                    value={this.state.properties}
                     placeholder="Enter properties"
-                    onChange={evt => this.setState( { properties : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -75,9 +76,7 @@ class NewProductForm extends Component {
                 <input 
                     name= "category"
                     type="text"
-                    value={this.state.category}
                     placeholder="Enter a category name"
-                    onChange={evt => this.setState( { category : evt.target.value })} 
                 /> 
                 </div> 
 
@@ -85,27 +84,20 @@ class NewProductForm extends Component {
                 <input 
                     name="picture"
                     type="text"
-                    value={this.state.picture}
                     placeholder="Enter an image URL"
-                    onChange={ evt => this.setState( { picture : evt.target.value })}
                 /> 
                 </div> 
                 <button type="submit">Submit</button> 
                 </form> 
 
+                
                 <Link to="/products">Return to All Products</Link>  
+               
             </div> 
     )
    }
 }
 
-const mapStateToProps = state => {
-    return { 
-        products: state.products 
-    }
-}
-
 const mapDispatchToProps = { addProduct }
 
-const newProductContainer = connect(mapStateToProps, mapDispatchToProps)(NewProductForm); 
-export default newProductContainer; 
+export default connect(null, mapDispatchToProps)(NewProductForm); 

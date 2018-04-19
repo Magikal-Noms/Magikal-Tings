@@ -6,7 +6,6 @@ import {Sidebar} from './Sidebar'
 class AllProducts extends Component {
 
     render() {
-        console.log('this',this.props)
         return (
 
             <div>
@@ -35,4 +34,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(AllProducts)
-
