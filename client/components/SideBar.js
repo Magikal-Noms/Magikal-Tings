@@ -13,7 +13,6 @@ export class SideBar extends Component {
     const categories = _.uniq(
       this.props.products.map(product => product.category)
     );
-
     return (
       <div>
         <ul>
@@ -36,4 +35,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default connect(mapStateToProps)(SideBar);
+export default connect(mapStateToProps)(Sidebar);

@@ -26,6 +26,7 @@ class AllProducts extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     products: state.products
@@ -33,3 +34,4 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(AllProducts);
+
