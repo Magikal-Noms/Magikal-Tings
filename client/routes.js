@@ -6,6 +6,7 @@ import {Login, Signup, UserHome, AllProducts, Product, NewProductForm, EditProdu
 import {me} from './store'
 import store from './store'
 import { fetchProducts } from './store/productsReducer';
+import {fetchCategories} from './store/categoriesReducer.js'
 /**
  * COMPONENT
  */
@@ -14,7 +15,10 @@ class Routes extends Component {
     this.props.loadInitialData()
 
     const productsThunk = fetchProducts();
+    const categoriesThunk = fetchCategories();
     store.dispatch(productsThunk)
+    store.dispatch(categoriesThunk);
+
   }
 
   render () {
