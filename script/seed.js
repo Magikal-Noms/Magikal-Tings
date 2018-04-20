@@ -46,7 +46,7 @@ async function seed() {
   const categories = await Promise.all([
     Category.create({
       id: 1,
-      name: "stones/crystals"
+      name: "crystals"
     }),
     Category.create({
       id: 2,
