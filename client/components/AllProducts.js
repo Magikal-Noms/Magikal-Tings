@@ -6,9 +6,10 @@ import { Sidebar } from "./Sidebar";
 class AllProducts extends Component {
   render() {
     let products = this.props.products;
+    let categories = this.props.categories
     return (
       <div>
-        <Sidebar products={this.props.products} />
+        <Sidebar categories={this.props.categories} />
         {products.map(product => {
           return (
             <div key={product.id}>
@@ -22,6 +23,10 @@ class AllProducts extends Component {
             </div>
           );
         })}
+
+
+
+
       </div>
     );
   }
@@ -29,7 +34,8 @@ class AllProducts extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products
+    products: state.products,
+    categories: state.categories
   };
 };
 
