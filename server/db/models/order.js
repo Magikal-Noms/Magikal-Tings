@@ -6,14 +6,24 @@ const Order = db.define('order', {
   shippingAddress: {
     type: Sequelize.STRING,
     allowNull: false,
-    notEmpty: true
+    validate: {
+      notEmpty: true
+
+    }
   },
   billingAddress: {
     type: Sequelize.STRING,
     allowNull: false,
+    validate: {
+      notEmpty: true
+
+    }
   },
   status: {
     type: Sequelize.ENUM('complete', 'pending')
+  },
+  userId: {
+    type: Sequelize.INTEGER,
   }
 })
 
