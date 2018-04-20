@@ -22,6 +22,7 @@ Order.belongsTo(User);
 Order.belongsToMany(Product, { through: 'line-order'});
 Product.belongsToMany(Order, { through: 'line-order'});
 Product.belongsTo(Category)
+Category.hasMany(Product)
 
 module.exports = {
   User,
