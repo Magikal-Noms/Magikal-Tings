@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import {Link} from 'react-router-dom';
 
 export class Sidebar extends Component {
   //onCLick of that component will take teh handleClick
@@ -12,7 +13,9 @@ export class Sidebar extends Component {
                 {categories.map(cat => {
           return (
             <div key={cat.id}>
+              <Link to={`/categories/${cat.name}`}>
               <li className="product-title"> {cat.name} </li>
+              </Link>
             </div>
           );
         })}
