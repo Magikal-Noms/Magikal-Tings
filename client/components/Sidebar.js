@@ -2,9 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import _ from "lodash";
 
-//we need to change from iterating over the products table to iterating over the
-//categories table (which now exists)
-//this may require a think to get all the categories
 export class Sidebar extends Component {
   //onCLick of that component will take teh handleClick
 
