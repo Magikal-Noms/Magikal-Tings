@@ -15,6 +15,11 @@ nav a {
   margin: 1em;
 }
 
+nav img {
+  height: 50px;
+  width: 50px;
+}
+
 form div {
   margin: 1em;
   display: inline-block;

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {Login, Signup, UserHome, AllProducts, Product, NewProductForm, EditProductForm, Sidebar, Navbar} from './components'
+import {Login, Signup, UserHome, AllProducts, Product, NewProductForm, EditProductForm, Sidebar, Navbar, Cart} from './components'
 import {me} from './store'
 import store from './store'
 import { fetchProducts } from './store/productsReducer';
@@ -12,23 +12,24 @@ import { fetchProducts } from './store/productsReducer';
 class Routes extends Component {
   componentDidMount () {
     this.props.loadInitialData()
-    
+
     const productsThunk = fetchProducts();
     store.dispatch(productsThunk)
   }
 
   render () {
     const {isLoggedIn} = this.props
-    
+
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
         <Route exact path='/products' component={AllProducts} />
         <Route exact path='/products/editproduct' component={EditProductForm} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/signup" component={Signup} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
         <Route exact path='/products/addproduct' component={NewProductForm} />
         <Route exact path='/products/:productId' component={Product} />
+        <Route exact path='/cart' component={Cart} />
         {
           isLoggedIn &&
             <Switch>
@@ -41,7 +42,7 @@ class Routes extends Component {
       )
     }
   }
-  
+
   /**
    <Route component={Login} />
  * CONTAINER
