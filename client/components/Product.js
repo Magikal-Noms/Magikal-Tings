@@ -9,7 +9,7 @@ class Product extends Component {
     return (
       <div>
         {product && (
-          <div>
+          <div key={product.id}>
             <h1> {product.name} </h1>
             <img className="media-object" src={product.picture} />
             <h2> Metaphysical Properties </h2>
