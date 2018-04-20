@@ -1,16 +1,18 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux';
 
-export default class Cart extends Component {
+// import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
+
+class Cart extends Component {
   render() {
-    return (<h1>TEST</h1>)
+    return (
+      <div>
+        HEEEEEYYYYYYYYYYYYYYYYYYY
+      </div>
+    );
   }
 }
 
-// function mapStateToProps(state, ownProps) {
-//   return;
-// }
+export default Cart
 
-// export default connect()(Cart);
-
-
+//connect(mapStateToProps)(Cart);
