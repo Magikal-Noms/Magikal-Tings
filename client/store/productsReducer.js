@@ -37,20 +37,20 @@ export const editProduct = (id, updatedProduct) => dispatch => {
       .catch(err => console.error(`Updating product ${product}`))
 }
 //reducer
-const productsReducer = function(state = [], action) {
-    
+const productsReducer = function(state = null, action) {
+
     switch(action.type) {
-        case GET_PRODUCTS: 
+        case GET_PRODUCTS:
         return action.products
-        
+
         case CREATE_PRODUCT:
         return [...state, action.product]
-        
+
         case UPDATE_PRODUCT:
         return state.map(product => (
             action.product.id === product.id ? action.product : product
         ))
-        default: 
+        default:
         return state
     }
 }
