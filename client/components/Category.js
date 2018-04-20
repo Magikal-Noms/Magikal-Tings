@@ -5,9 +5,9 @@ import  ProductCard  from "./ProductCard";
 
 class Category extends Component {
   render() {
-    const categories = this.props.categories;
-    const cat = categories.find(cat => cat.name === this.props.match.params.category)
-    const products = this.props.products.filter(product => product.categoryId === cat.id);
+    let categories = this.props.categories;
+    let cat = categories.find(cat => cat.name === this.props.match.params.category)
+    let products = this.props.products.filter(product => product.categoryId === cat.id);
 
     console.log("PRODUCTS", products)
 
@@ -27,6 +27,7 @@ class Category extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  console.log("State is", state)
   return {
     products: state.products,
     categories: state.categories
