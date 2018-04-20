@@ -13,7 +13,8 @@ const db = require('../server/db')
 const {
   User,
   Product,
-  Category
+  Category,
+  Order
 } = require('../server/db/models')
 
 async function seed() {
@@ -41,6 +42,39 @@ async function seed() {
       isAdmin: true,
       password: '870'
     }),
+  ])
+
+  const orders = await Promise.all([
+    Order.create({
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: complete,
+      userId: 1
+    }),
+    Order.create({
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: pending,
+      userId: 2
+    }),
+    Order.create({
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: complete,
+      userId: 1
+    }),
+    Order.create({
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: complete,
+      userId: 3
+    }),
+    Order.create({
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: complete,
+      userId: 1
+    })
   ])
 
   const categories = await Promise.all([
