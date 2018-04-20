@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 class ProductCard extends Component {
   render() {
+    const product = this.props.product
     return (
       <div key={product.id}>
         <h1 className="product-title"> {product.name} </h1>
