@@ -2,17 +2,25 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Sidebar } from "./Sidebar";
-import {ProductCard} from './ProductCard'
 
 class AllProducts extends Component {
   render() {
     let products = this.props.products;
-    let categories = this.props.categories;
     return (
       <div>
-        <Sidebar product={this.props.product} />
+        <Sidebar products={this.props.products} />
         {products.map(product => {
-          return (<ProductCard product={product}/>);
+          return (
+            <div key={product.id}>
+              <h1 className="product-title"> {product.name} </h1>
+              <img className="media-object" src={product.picture} />
+              <h2 className="product-price"> Price: {product.price} </h2>
+              <Link to={`/products/${product.id}`}>
+                {" "}
+                <button> {product.name} </button>
+              </Link>
+            </div>
+          );
         })}
       </div>
     );
@@ -21,12 +29,9 @@ class AllProducts extends Component {
 
 const mapStateToProps = state => {
   return {
-    products: state.products,
-    product: state.products.find(ele => {
-      return ele.id === +ownProps.match.params.productId;
-    }),
-    categories: state.categories
+    products: state.products
   };
 };
 
 export default connect(mapStateToProps)(AllProducts);
+
