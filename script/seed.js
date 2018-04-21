@@ -153,7 +153,7 @@ async function seed() {
     }),
     Product.create({
       name: "Pentacle",
-      categoryId: 2,
+      categoryId: 5,
       price: 7.30,
       properties: "Pentacle made of natural soapstone.  " +
         "Measures approximately 3 inches in diameter.",
@@ -161,7 +161,7 @@ async function seed() {
     }),
     Product.create({
       name: "Tree of Life Pentacle Necklace",
-      categoryId: 5,
+      categoryId: 2,
       price: 26.99,
       properties: "",
       picture: "https://images-na.ssl-images-amazon.com/images/I/61Yx0IUrN3L._UY575_.jpg"
