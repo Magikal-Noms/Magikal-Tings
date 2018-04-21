@@ -29,50 +29,51 @@ async function seed() {
       username: 'puppylover369',
       email: 'banspri0@gmail.com',
       isAdmin: true,
-      password: '123'
+      password: '123',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
     User.create({
       username: 'destinisabeach',
       email: 'destinmcmurry@gmail.com',
       isAdmin: false,
-      password: '1234'
+      password: '1234',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
     User.create({
       username: 'daisy',
       email: 'daisy@gmail.com',
       isAdmin: true,
-      password: '870'
+      password: '870',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
   ])
 
   const orders = await Promise.all([
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+
       status: 'complete',
       userId: 1
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+
       status: 'pending',
       userId: 2
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+
       status: 'complete',
       userId: 1
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+
       status: 'complete',
       userId: 3
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+
       status: 'complete',
       userId: 1
     })
@@ -168,7 +169,7 @@ async function seed() {
     }),
   ])
 
-    const lineItems = await Promise.all([
+  const lineItems = await Promise.all([
     LineItem.create({
       quantity: 2,
       productPrice: 100,
