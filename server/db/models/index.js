@@ -23,11 +23,13 @@ User.hasMany(Order);
 Product.belongsTo(Category);
 Category.hasMany(Product);
 
-LineItem.belongsTo(Order);
-Order.hasMany(LineItem);
-LineItem.belongsTo(Product);
-Product.hasMany(LineItem);
+// LineItem.belongsTo(Order);
+// Order.hasMany(LineItem);
+// LineItem.belongsTo(Product);
+// Product.hasMany(LineItem);
 
+Order.belongsToMany(Product, {through: 'line-item'})
+Product.belongsToMany(Order, {through: 'line-item'})
 
 module.exports = {
   User,

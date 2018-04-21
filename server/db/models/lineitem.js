@@ -5,7 +5,7 @@ const db = require('../db')
 const LineItem = db.define('line-item', {
   quantity: {
     type: Sequelize.INTEGER,
-    defaultValue: 1;
+    defaultValue: 1,
     
   },
   productPrice: {
