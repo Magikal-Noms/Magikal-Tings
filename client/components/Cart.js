@@ -2,17 +2,32 @@ import React, { Component } from "react";
 
 // import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import CartItem from './CartItem';
 
 class Cart extends Component {
   render() {
+    console.log("cart", this.props.cart)
+    console.log("line items", this.props.cart[0]["line-items"][0].product)
+    const items = this.props.cart[0]["line-items"]
+    console.log(" items!!!", items)
     return (
       <div>
-        HEEEEEYYYYYYYYYYYYYYYYYYY
+        {items && items.map(item => {
+          return (
+            <div key={item.id}>
+              <CartItem item={item}/>
+            </div>
+            )
+        })}
       </div>
     );
   }
 }
 
-export default Cart
+const mapStateToProps = (state) => {
+  return {cart: state.cart}
+}
+
+export default connect(mapStateToProps)(Cart)
 
 //connect(mapStateToProps)(Cart);
