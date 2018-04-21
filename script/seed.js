@@ -48,31 +48,31 @@ async function seed() {
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: "complete",
       userId: 1
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: pending,
+      status: "pending",
       userId: 2
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: "complete",
       userId: 1
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: "complete",
       userId: 3
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: "complete",
       userId: 1
     })
   ])
