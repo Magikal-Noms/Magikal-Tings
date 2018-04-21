@@ -47,8 +47,8 @@ async function seed() {
 
   const orders = await Promise.all([
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+      shippingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
       status: 'complete',
       userId: 1
     }),
@@ -59,20 +59,20 @@ async function seed() {
       userId: 2
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
-      status: 'complete',
+      shippingAddress: '2159 Beverly Rd, Brooklyn, NY 11226',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      status: 'pending',
       userId: 1
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+      shippingAddress: 'Dog Mansion',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
       status: 'complete',
       userId: 3
     }),
     Order.create({
-      shippingAddress: 'destinisabeach',
-      billingAddress: 'destinmcmurry@gmail.com',
+      shippingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
       status: 'complete',
       userId: 1
     })
