@@ -21,7 +21,7 @@ export const fetchCategories = () => {
 };
 
 //reducer
-const categoriesReducer = function(state = [], action) {
+const categoriesReducer = function(state = null, action) {
   switch (action.type) {
     case GET_CATEGORIES:
       return action.categories;
