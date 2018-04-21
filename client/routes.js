@@ -28,7 +28,9 @@ class Routes extends Component {
 
   render () {
     const {isLoggedIn} = this.props
-    if (!this.props.products || !this.props.categories || !this.props.cart){
+    if (!this.props.products || !this.props.categories){
+      return "LOADING"
+    } else if (this.props.isLoggedIn && !this.props.cart){
       return "LOADING"
     }
     return (
