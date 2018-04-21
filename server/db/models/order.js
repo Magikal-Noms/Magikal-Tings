@@ -23,7 +23,7 @@ const Order = db.define('order', {
     type: Sequelize.ENUM('complete', 'pending')
   },
   userId: {
-    type: Sequelize.STRING,
+    type: Sequelize.INTEGER,
   }
 })
 
