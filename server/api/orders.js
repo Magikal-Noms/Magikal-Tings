@@ -14,6 +14,7 @@ router.get('/', (req,res,next) => {
    })
 
 router.get('/:orderId', (req, res, next) => {
-    //Order.findAll 
-        //.then 
+    Order.findById(+req.params.orderId, { include: [LineItem]})
+        .then(orders => res.json(orders))
+        .catch(next); 
 })
