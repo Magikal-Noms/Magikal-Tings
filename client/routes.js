@@ -6,9 +6,10 @@ import {Login, Signup, UserHome, AllProducts, Product, Category,
   NewProductForm, EditProductForm, Sidebar, Navbar, Cart, AllOrders, Order} from './components'
 import {me} from './store'
 import store from './store'
-import { fetchProducts } from './store/productsReducer';
-import { fetchCategories } from './store/categoriesReducer';
-import { fetchUserOrders } from './store/ordersReducer';
+import { fetchUserOrders } from './store';
+import { fetchProducts } from './store';
+import {fetchCategories} from './store';
+import {fetchCart} from './store'
 
 /**
  * COMPONENT
@@ -20,16 +21,20 @@ class Routes extends Component {
     const productsThunk = fetchProducts();
     const categoriesThunk = fetchCategories();
     const ordersThunk = fetchUserOrders();
-
-    store.dispatch(productsThunk)
+    const cartThunk = fetchCart();
+    
     store.dispatch(categoriesThunk);
     store.dispatch(ordersThunk);
+    store.dispatch(productsThunk)
+    store.dispatch(cartThunk)
 
   }
 
   render () {
     const {isLoggedIn} = this.props
     if (!this.props.products || !this.props.categories){
+      return "LOADING"
+    } else if (this.props.isLoggedIn && !this.props.cart){
       return "LOADING"
     }
     return (
@@ -69,7 +74,8 @@ const mapState = (state) => {
     // Otherwise, state.user will be an empty object, and state.user.id will be falsey
     isLoggedIn: !!state.user.id,
     products: state.products,
-    categories: state.categories
+    categories: state.categories,
+    cart: state.cart
   }
 }
 
