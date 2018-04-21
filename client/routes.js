@@ -3,9 +3,10 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, AllProducts, Product, Category,
-  NewProductForm, EditProductForm, Sidebar, Navbar, Cart} from './components'
+  NewProductForm, EditProductForm, Sidebar, Navbar, Cart, AllOrders, Order} from './components'
 import {me} from './store'
 import store from './store'
+import { fetchUserOrders } from './store';
 import { fetchProducts } from './store';
 import {fetchCategories} from './store';
 import {fetchCart} from './store'
@@ -19,9 +20,12 @@ class Routes extends Component {
 
     const productsThunk = fetchProducts();
     const categoriesThunk = fetchCategories();
+    const ordersThunk = fetchUserOrders();
     const cartThunk = fetchCart();
-    store.dispatch(productsThunk)
+    
     store.dispatch(categoriesThunk);
+    store.dispatch(ordersThunk);
+    store.dispatch(productsThunk)
     store.dispatch(cartThunk)
 
   }
@@ -40,10 +44,13 @@ class Routes extends Component {
         <Route exact path='/products/editproduct' component={EditProductForm} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
+        <Route exact path='/orders' component={AllOrders} />
+        <Route exact path='/orders/:orderId' component={Order} />
         <Route exact path='/products/addproduct' component={NewProductForm} />
         <Route exact path='/products/:productId' component={Product} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/categories/:category' component={Category} />
+
         {
           isLoggedIn &&
             <Switch>
