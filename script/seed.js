@@ -188,7 +188,7 @@ async function seed() {
       categoryId: 2,
       price: 7.3,
       properties:
-        "Pentacle made of natural soapstone.  " +
+        "Pentacle made of natural soapstone.  ",
       picture:
         "https://images-na.ssl-images-amazon.com/images/I/713qqf--XXL._SL1491_.jpg"
     }),
