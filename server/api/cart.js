@@ -24,11 +24,19 @@ router.post('/products/:productId', (req,res,next) => {
       status: 'pending'
     }}))
     .spread((order, wasCreated) =>
-    LineItem.findOrCreate({where: {
+    
+      LineItem.findOrCreate({where: {
         orderId: order.id,
         productId,
         quantity: req.body.quantity
+      
     }}))
+    .spread((lineItem, wasCreated) => {
+      if(!wasCreated) {
+        lineItem.update({quantity: lineItem.quantity + 1})
+      }
+    })
+    
     .then(lineItem => res.json(lineItem))
 
 })
