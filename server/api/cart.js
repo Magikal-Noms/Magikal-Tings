@@ -13,14 +13,19 @@ router.get('/', (req,res,next) => {
 })
 
 
-router.post('/', (req,res,next) => {
+router.post('/products/:productId', (req,res,next) => {
+  const productId = +req.params.productId
   const id = req.user ? req.user.id : req.sessionID
+  
   User.findOne({where: {id}})
     .then(user => Order.findOrCreate({where: {
-      id, 
-      shippingAddress: user.shippingAddress,
+      userId: id, 
       billingAddress: user.billingAddress,
       status: 'pending'
+    }}))
+    .then(order => LineItem.findOrCreate({where: {
+        orderId: order.id,
+        productId: productId,
     }}))
   
 })
