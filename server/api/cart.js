@@ -17,10 +17,11 @@ router.post('/', (req,res,next) => {
   const id = req.user ? req.user.id : req.sessionID
   User.findOne({where: {id}})
     .then(user => Order.findOrCreate({where: {
-      id, 
+      id,
       shippingAddress: user.shippingAddress,
       billingAddress: user.billingAddress,
       status: 'pending'
     }}))
-  
+    .then(addedOrder => res.json(addedOrder))
+
 })
