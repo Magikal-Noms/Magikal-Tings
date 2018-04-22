@@ -17,7 +17,7 @@ class Category extends Component {
         <Sidebar categories={this.props.categories} />
         {products.map(product => {
           return (
-            <div>
+            <div key={product.id}>
               <ProductCard product={product} />
             </div>
           );

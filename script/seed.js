@@ -56,6 +56,7 @@ async function seed() {
             shippingAddress: "destinisabeach",
       billingAddress: "destinmcmurry@gmail.com",
       status: "complete",
+
       userId: 1
     }),
     Order.create({
@@ -80,6 +81,19 @@ async function seed() {
             shippingAddress: "destinisabeach",
       billingAddress: "destinmcmurry@gmail.com",
       status: "complete",
+      status: 'pending',
+      userId: 1
+    }),
+    Order.create({
+      shippingAddress: 'Dog Mansion',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      status: 'complete',
+      userId: 3
+    }),
+    Order.create({
+      shippingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      billingAddress: 'W153N7682 Meadow Lark Lane, Menomonee Falls, WI 53051',
+      status: 'complete',
       userId: 1
     })
   ]);
@@ -175,13 +189,12 @@ async function seed() {
       price: 7.3,
       properties:
         "Pentacle made of natural soapstone.  " +
-        "Measures approximately 3 inches in diameter.",
       picture:
         "https://images-na.ssl-images-amazon.com/images/I/713qqf--XXL._SL1491_.jpg"
     }),
     Product.create({
       name: "Tree of Life Pentacle Necklace",
-      categoryId: 5,
+      categoryId: 2,
       price: 26.99,
       properties: "",
       picture:
