@@ -38,9 +38,12 @@ router.post('/products/:productId', (req,res,next) => {
     })
 
     .then(lineItem => res.json(lineItem))
+    .catch(next);
 
 })
 
-router.delete('/products/:productId', (req, res, next) => {
-
+router.delete('/:itemId', (req, res, next) => {
+  LineItem.destroy({where: {id: +req.params.itemId}})
+  .then(() => res.sendStatus(204))
+  .catch(next);
 })
