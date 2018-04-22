@@ -12,7 +12,6 @@ router.get('/', (req,res,next) => {
        .catch(next)
 })
 
-
 router.post('/products/:productId', (req,res,next) => {
 
   const productId = +req.params.productId
