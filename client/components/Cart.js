@@ -6,9 +6,7 @@ import CartItem from './CartItem';
 
 class Cart extends Component {
   render() {
-    console.log("cart", this.props.cart)
-    console.log("isLoggedIn", this.props.isLoggedIn)
-    // console.log("line items", this.props.cart[0]["line-items"][0].product)
+
     const items = this.props.cart.length ? this.props.cart[0]["line-items"] : null
     console.log(" items!!!", items)
     return (
