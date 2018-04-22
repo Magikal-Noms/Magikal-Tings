@@ -14,18 +14,24 @@ router.get('/', (req,res,next) => {
 
 
 router.post('/products/:productId', (req,res,next) => {
+  console.log("HITTING POST ROUTE")
+  console.log("REQ.BODY", req.body)
   const productId = +req.params.productId
   const id = req.user ? req.user.id : req.sessionID
-  
+
+
   User.findOne({where: {id}})
     .then(user => Order.findOrCreate({where: {
-      userId: id, 
+      userId: id,
       billingAddress: user.billingAddress,
       status: 'pending'
     }}))
-    .then(order => LineItem.findOrCreate({where: {
+    .spread((order, wasCreated) =>
+    LineItem.findOrCreate({where: {
         orderId: order.id,
-        productId: productId,
+        productId,
+        quantity: req.body.quantity
     }}))
-  
+    .then(lineItem => res.json(lineItem))
+
 })

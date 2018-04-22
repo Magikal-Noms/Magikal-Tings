@@ -9,6 +9,7 @@ import store from './store'
 import { fetchProducts } from './store';
 import {fetchCategories} from './store';
 import {fetchCart} from './store'
+import {addProductToCart} from './store'
 
 /**
  * COMPONENT
@@ -20,9 +21,11 @@ class Routes extends Component {
     const productsThunk = fetchProducts();
     const categoriesThunk = fetchCategories();
     const cartThunk = fetchCart();
+    // const addProductThunk = addProductToCart()
     store.dispatch(productsThunk)
     store.dispatch(categoriesThunk);
     store.dispatch(cartThunk)
+    // store.dispatch(addProductThunk);
 
   }
 
@@ -44,6 +47,7 @@ class Routes extends Component {
         <Route exact path='/products/:productId' component={Product} />
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/categories/:category' component={Category} />
+        <Route exact path='/cart/products/:productId' component={Cart}/>
         {
           isLoggedIn &&
             <Switch>

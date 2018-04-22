@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
+import AddToCartButton from './AddToCartButton';
+
 
 class Product extends Component {
   render() {
     const product = this.props.product;
+    console.log("STATE", this.props)
     return (
       <div>
         {product && (
@@ -14,9 +16,11 @@ class Product extends Component {
             <img className="media-object" src={product.picture} />
             <h2> Metaphysical Properties </h2>
             <p> {product.properties} </p>
+            <AddToCartButton product={this.props.product} />
           </div>
         )}
       </div>
+
     );
   }
 }
@@ -28,5 +32,6 @@ const mapStateToProps = (state, ownProps) => {
     })
   };
 };
+
 
 export default connect(mapStateToProps)(Product);
