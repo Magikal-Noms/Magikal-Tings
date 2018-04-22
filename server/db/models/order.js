@@ -4,11 +4,10 @@ const db = require('../db')
 
 const Order = db.define('order', {
   shippingAddress: {
-    type: Sequelize.STRING,
+    type: Sequelize.VIRTUAL,
     allowNull: false,
     validate: {
       notEmpty: true
-
     }
   },
   billingAddress: {
@@ -16,7 +15,6 @@ const Order = db.define('order', {
     allowNull: false,
     validate: {
       notEmpty: true
-
     }
   },
   status: {
