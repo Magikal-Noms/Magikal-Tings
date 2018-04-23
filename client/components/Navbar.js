@@ -6,25 +6,27 @@ import { logout } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className='nav-div'>
-    <h1>Magikal Tings</h1>
-    <nav>
-    <div className='nav-items'>
-    <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-           <Link to="/login"><button>Login</button></Link> 
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
+  <div className='heading'> <h1>Magikal Tings</h1> </div> 
+  <nav>
+  <div className='nav-items'>
+  {isLoggedIn ? (
+    <div>
+    {/* The navbar will show these links after you log in */}
+    <Link to='/products'><button> Tings </button> </Link>
+    <Link to="/home"><button>Home</button></Link>
+    <button onClick={handleClick}>
+    Log Out!
+    </button>
+    </div>
+  ) : (
+    <div>
+    {/* The navbar will show these links before you log in */}
+      <Link to='/products'><button> Tings </button> </Link>
+      <Link to="/login"><button>Login</button></Link> 
+      <Link to="/signup"><button>Sign Up!</button></Link>
+      </div>
+    )}
+        <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
       </div>
     </nav>
     <hr />
