@@ -14,7 +14,8 @@ const {
   User,
   Product,
   Category,
-  Order
+  Order,
+  LineItem
 } = require('../server/db/models')
 
 async function seed() {
@@ -173,6 +174,45 @@ async function seed() {
     }),
   ])
 
+  const lineItems = await Promise.all([
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 1,
+    orderId: 2
+  }),
+  LineItem.create({
+    quantity: 1,
+    productPrice: 100,
+    productId: 2,
+    orderId: 3
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 4,
+    orderId: 5
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 7,
+    orderId: 3
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 4,
+    orderId: 4
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 1,
+    orderId: 1
+  })
+])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} products`)
   console.log(`seeded successfully`)
@@ -199,3 +239,7 @@ seed()
  * of the async function
  */
 console.log('seeding...')
+
+
+
+
