@@ -8,6 +8,7 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
   <div className='nav-div'>
     <h1>Magikal Tings</h1>
     <nav>
+    <div className='nav-items'>
     <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
       {isLoggedIn ? (
         <div>
@@ -20,10 +21,11 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
+           <Link to="/login"><button>Login</button></Link> 
           <Link to="/signup">Sign Up</Link>
         </div>
       )}
+      </div>
     </nav>
     <hr />
   </div>
