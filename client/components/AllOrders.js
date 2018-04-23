@@ -13,7 +13,7 @@ class AllOrders extends Component {
         {orders && orders.map(order => {
           return (
             <div key={order.id}>
-                 <Link to={`/orders/${order.id}`}><h1>{order.createdAt}</h1></Link>
+                 <Link to={`/orders/${order.id}`}><h1>Order #{order.id} created {order.createdAt.match(/^[\d, -]+/)}</h1></Link>
             </div>
           );
         })}
