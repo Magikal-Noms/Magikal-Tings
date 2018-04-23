@@ -8,7 +8,7 @@ class AddToCartButton extends Component {
     return (
       <div>
         <button onClick={addProductToCart(this.props.product.id)}>
-          <Link to={`/cart/products/${this.props.product.id}`}>
+          <Link to='/cart'>
             Add To Cart
           </Link>
         </button>
