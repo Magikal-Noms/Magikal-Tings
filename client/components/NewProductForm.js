@@ -50,16 +50,6 @@ class NewProductForm extends Component {
             <input
               name="productName"
               type="text"
-              value={this.state.productName}
-              placeholder="Enter a product name"
-              onChange={evt => this.setState({ productName: evt.target.value })}
-            />
-          </div>
-
-          <div>
-            <input
-              name="productName"
-              type="text"
               placeholder="Enter a product name"
             />
           </div>
