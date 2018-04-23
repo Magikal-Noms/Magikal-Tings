@@ -81,7 +81,6 @@ async function seed() {
             shippingAddress: "destinisabeach",
       billingAddress: "destinmcmurry@gmail.com",
       status: "complete",
-      status: 'pending',
       userId: 1
     }),
     Order.create({
