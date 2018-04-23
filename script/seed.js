@@ -28,19 +28,25 @@ async function seed() {
       username: 'puppylover369',
       email: 'banspri0@gmail.com',
       isAdmin: true,
-      password: '123'
+      password: '123',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
     User.create({
       username: 'destinisabeach',
       email: 'destinmcmurry@gmail.com',
       isAdmin: false,
-      password: '1234'
+      password: '1234',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
     User.create({
       username: 'daisy',
       email: 'daisy@gmail.com',
       isAdmin: true,
-      password: '870'
+      password: '870',
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com'
     }),
   ])
 
@@ -58,34 +64,21 @@ async function seed() {
       userId: 2
     }),
     Order.create({
-
-            shippingAddress: "destinisabeach",
-      billingAddress: "destinmcmurry@gmail.com",
-      status: "complete",
-      userId: 1
-    }),
-    Order.create({
-            shippingAddress: "destinisabeach",
-      billingAddress: "destinmcmurry@gmail.com",
-      status: "complete",
-      userId: 3
-    }),
-    Order.create({
-            shippingAddress: "destinisabeach",
-      billingAddress: "destinmcmurry@gmail.com",
-      status: "complete",
+      shippingAddress: 'destinisabeach',
+      billingAddress: 'destinmcmurry@gmail.com',
+      status: 'complete',
       userId: 1
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: 'complete',
       userId: 3
     }),
     Order.create({
       shippingAddress: 'destinisabeach',
       billingAddress: 'destinmcmurry@gmail.com',
-      status: complete,
+      status: 'complete',
       userId: 1
     })
   ])
@@ -180,6 +173,45 @@ async function seed() {
     }),
   ])
 
+  const lineItems = await Promise.all([
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 1,
+    orderId: 2
+  }),
+  LineItem.create({
+    quantity: 1,
+    productPrice: 100,
+    productId: 2,
+    orderId: 3
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 4,
+    orderId: 5
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 7,
+    orderId: 3
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 4,
+    orderId: 4
+  }),
+  LineItem.create({
+    quantity: 2,
+    productPrice: 100,
+    productId: 1,
+    orderId: 1
+  })
+])
+
   console.log(`seeded ${users.length} users`)
   console.log(`seeded ${products.length} products`)
   console.log(`seeded successfully`)
@@ -206,3 +238,7 @@ seed()
  * of the async function
  */
 console.log('seeding...')
+
+
+
+
