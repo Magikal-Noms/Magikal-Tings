@@ -7,20 +7,20 @@ class DeleteCartItemButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={deleteProductFromCart(this.props.item.id)}>
-          <Link to={'/cart'}>
+        <button onClick={this.props.deleteProductFromCart}>
             DELETE
-          </Link>
+          
         </button>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps )=> {
   return {
-    deleteProductFromCart: item => {
-      dispatch(deleteProductFromCart(item));
+    deleteProductFromCart () {
+      console.log('will')
+      dispatch(deleteProductFromCart(ownProps.item.id));
     }
   };
 };

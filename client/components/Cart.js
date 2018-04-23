@@ -12,7 +12,7 @@ class Cart extends Component {
 
   render() {
 
-    const items = this.props.cart.length ? this.props.cart[0]["line-items"] : null
+    const items = this.props.cart ? this.props.cart["line-items"] : null
     console.log(" items!!!", items)
     return (
       <div>
