@@ -7,7 +7,6 @@ import AddToCartButton from './AddToCartButton';
 class Product extends Component {
   render() {
     const product = this.props.product;
-    console.log("STATE", this.props)
     return (
       <div>
         {product && (

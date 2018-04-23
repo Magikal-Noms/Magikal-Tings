@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+import  {connect} from 'react-redux';
+import  { deleteProductFromCart } from '../store/cartReducer';
+import DeleteCartItemButton from './DeleteCartItemButton';
 
-
-class CartItem extends Component {
+export default class CartItem extends Component {
 
   render() {
     const item = this.props.item
@@ -9,11 +12,10 @@ class CartItem extends Component {
       <div>
         <p>Product: {item.product.name}</p>
         <p>Price: {item.product.price}</p>
-
         <p>Quantity: {item.quantity}</p>
+        <DeleteCartItemButton item={item}/>
       </div>
     );
   }
 }
 
-export default CartItem;

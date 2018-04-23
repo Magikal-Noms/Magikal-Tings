@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapDispatchToProps)(AddToCartButton);
+export default connect(null, mapDispatchToProps)(AddToCartButton);
