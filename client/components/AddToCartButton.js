@@ -7,11 +7,11 @@ class AddToCartButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={addProductToCart(this.props.product.id)}>
-          <Link to='/cart'>
+        <Link to='/cart'>
+          <button onClick={addProductToCart(this.props.product.id)}>
             Add To Cart
-          </Link>
-        </button>
+          </button>
+        </Link>
       </div>
     );
   }
