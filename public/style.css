@@ -21,7 +21,7 @@ h1 {
 
 div .nav-items {
   display: flex;
-  margin-left: 80vw
+  margin-left: 78vw
 }
 
 div .nav-div {
@@ -31,7 +31,8 @@ div .nav-div {
 }
 
 button {
-  padding: 15px;
+  padding: 10px;
+  margin: 7px;
 }
  
 /* body {

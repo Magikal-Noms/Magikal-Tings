@@ -9,22 +9,22 @@ const Navbar = ({ handleClick, isLoggedIn }) => (
     <h1>Magikal Tings</h1>
     <nav>
     <div className='nav-items'>
-    <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
-           <Link to="/login"><button>Login</button></Link> 
-          <Link to="/signup">Sign Up</Link>
-        </div>
-      )}
+    {isLoggedIn ? (
+      <div>
+      {/* The navbar will show these links after you log in */}
+      <Link to="/home">Home</Link>
+      <a href="#" onClick={handleClick}>
+      Log Out!
+      </a>
+      </div>
+    ) : (
+      <div>
+      {/* The navbar will show these links before you log in */}
+      <Link to="/login"><button>Login</button></Link> 
+      <Link to="/signup"><button>Sign Up!</button></Link>
+      </div>
+    )}
+        <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
       </div>
     </nav>
     <hr />
