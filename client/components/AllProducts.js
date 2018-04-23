@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import  Sidebar  from "./Sidebar";
+import  Navbar  from "./Navbar";
 import ProductCard from './ProductCard';
 
 class AllProducts extends Component {
@@ -10,6 +11,7 @@ class AllProducts extends Component {
     let categories = this.props.categories
     return (
       <div>
+        <Navbar/>
         <Sidebar categories={this.props.categories} />
         {products.map(product => {
           return (

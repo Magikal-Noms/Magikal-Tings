@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
-
+import Navbar from './Navbar';
 class Cart extends Component {
   componentDidMount(){
     this.props.fetchCart();
@@ -16,6 +16,7 @@ class Cart extends Component {
     console.log(" items!!!", items)
     return (
       <div>
+        <Navbar />
         {items ? items.map(item => {
           return (
             <div key={item.id}>
