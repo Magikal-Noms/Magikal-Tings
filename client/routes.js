@@ -22,12 +22,12 @@ class Routes extends Component {
     const productsThunk = fetchProducts();
     const categoriesThunk = fetchCategories();
     const ordersThunk = fetchUserOrders();
-    const cartThunk = fetchCart();
-    
+    // const cartThunk = fetchCart();
+
     store.dispatch(categoriesThunk);
     store.dispatch(ordersThunk);
     store.dispatch(productsThunk)
-    store.dispatch(cartThunk)
+    // store.dispatch(cartThunk)
     // store.dispatch(addProductThunk);
 
   }
@@ -85,7 +85,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     loadInitialData () {
-      dispatch(me())
+      dispatch(fetchCart())
     }
   }
 }

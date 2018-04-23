@@ -43,17 +43,25 @@ export const addProductToCart = (productId) => {
         productId,
         quantity: 1
       })
-      .then(res => dispatch(addToCart(res.data)))
+      .then(res => {
+        return (dispatch) => {
+          dispatch(addToCart(res.data))
+        }
+      })
       .catch(err => console.error(`Adding to cart: ${productId} unsuccessful`, err))
   }
 }
 
 export const deleteProductFromCart = (lineItemId) => {
   return function thunk(dispatch) {
-    return axios.delete(`/api/cart/${lineItemId}`, {
+     axios.delete(`/api/cart/${lineItemId}`, {
       lineItemId
     })
-      .then(res => dispatch(deleteFromCart(res.data)))
+      .then(res => {
+        return (dispatch) => {
+          dispatch(deleteFromCart(res.data))
+        }
+      })
       .catch(err => console.error('Deleting from cart unsucessful', err))
   }
 }

@@ -3,8 +3,13 @@ import React, { Component } from "react";
 // import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import CartItem from './CartItem';
+import {fetchCart} from '../store'
 
 class Cart extends Component {
+  componentDidMount(){
+    this.props.fetchCart();
+  }
+
   render() {
 
     const items = this.props.cart.length ? this.props.cart[0]["line-items"] : null
@@ -28,6 +33,14 @@ const mapStateToProps = (state) => {
     isLoggedIn: state.isLoggedIn}
 }
 
-export default connect(mapStateToProps)(Cart)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchCart: () => {
+      dispatch(fetchCart());
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)
 
 //connect(mapStateToProps)(Cart);
