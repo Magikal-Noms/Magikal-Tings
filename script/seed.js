@@ -14,7 +14,8 @@ const {
   User,
   Product,
   Category,
-  Order
+  Order,
+  LineItem
 } = require('../server/db/models')
 
 async function seed() {
