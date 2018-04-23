@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { logout } from "../store";
 
 const Navbar = ({ handleClick, isLoggedIn }) => (
-  <div>
+  <div className='nav-div'>
     <h1>Magikal Tings</h1>
     <nav>
     <Link to='/cart'><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16757-200.png" alt=""/></Link>
