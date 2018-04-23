@@ -27,7 +27,7 @@ router.post('/products/:productId', (req,res,next) => {
       LineItem.findOrCreate({where: {
         orderId: order.id,
         productId,
-        quantity: req.body.quantity
+        
 
     }}))
     .spread((lineItem, wasCreated) => {
