@@ -4,19 +4,69 @@ const {Order, Product, User} = require('../db/models')
 module.exports = router
 
 router.use( async (req,res,next) => {
-  const [cart] = await Order.findOrCreate({where: {
-    userId: req.user.id,
-    billingAddress: req.user.billingAddress,
-    status: 'pending'
-  }})
-  .catch(next)
+
+  let cart
+  const search = {status: 'pending'}
+  if (req.session.cartId)
+    search.id = req.session.cartId
+  else if (req.user)
+    search.userId = req.user.id
+  console.log('!!!! ', search)
+  if (!req.user && !req.session.cartId)
+    cart = await Order.create(search)
+  else
+    cart = await Order.findOrCreate({ where: search })
+    .then(([foundOrCreatedCart]) => {
+      if (req.user && req.session.cartId && !foundOrCreatedCart.userId)
+        return foundOrCreatedCart
+          .update({userId: req.user.id})
+      return foundOrCreatedCart
+    })
+    .catch(next)
+
+
+  // if (req.session.cartId !== undefined)
+  // {
+  //   console.log("In first if")
+  //   console.log(req.session.cartId)
+  //   cart = await Order.findOne({
+  //     where: {
+  //       id: req.session.cartId,
+  //       status: 'pending'
+  //     }
+  //   }).catch(next)
+  // }
+  //
+  // else if (req.user)
+  // {
+  //   console.log("In second if")
+  //   cart = await Order.findOrCreate({
+  //     where: {
+  //       userId: req.user.id,
+  //       status: 'pending'
+  //     }
+  //   }).then(([createdCart]) => createdCart)
+  //     .catch(next)
+  // }
+  //
+  // else {
+  //   console.log("In else")
+  //   cart = await Order.create({
+  //     status: 'pending'
+  //   }).catch(next)
+  // }
+
+  console.log("*********************************Cart is", cart)
+
   req.cart = cart
-  req.session.cartId = cart.id
+  // console.log("After req.cart is", req.cart)
+  if (req.cart)
+    req.session.cartId = cart.id
   next()
 })
 router.get('/', (req,res,next) => {
   res.json(req.cart)
- 
+
 })
 
 router.post('/products/:productId', async (req,res,next) => {
@@ -35,7 +85,7 @@ router.post('/products/:productId', async (req,res,next) => {
     .catch(next)
     await req.cart.reload()
     res.json(req.cart)
-   
+
 
 })
 
