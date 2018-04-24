@@ -12,7 +12,18 @@ const sessionStore = new SequelizeStore({db})
 const PORT = process.env.PORT || 8080
 const app = express()
 const socketio = require('socket.io')
+const cors = require('cors');
+const CORS_WHITELIST = require('./constants/frontend');
 module.exports = app
+
+
+const corsOptions = {
+  origin: (origin, callback) =>
+    (CORS_WHITELIST.indexOf(origin) !== -1 || !origin)
+      ? callback(null, true)
+      : callback(new Error('Not allowed by CORS'))
+};
+
 
 /**
  * In your development environment, you can keep all of your
@@ -36,6 +47,11 @@ const createApp = () => {
   app.use(morgan('dev'))
 
   // body parsing middleware
+
+  app.use(cors(corsOptions));
+
+  app.use(bodyParser.json());
+
   app.use(bodyParser.json())
   app.use(bodyParser.urlencoded({ extended: true }))
 

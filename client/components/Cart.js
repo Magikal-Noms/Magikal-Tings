@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
-
+import {Link} from 'react-router-dom'
 import Checkout from './Checkout';
 
 
@@ -18,10 +18,10 @@ class Cart extends Component {
   render() {
 
     const items = this.props.cart ? this.props.cart["line-items"] : null
-    const amount = items.reduce(function(accumulator, currentValue) {
-  return accumulator + currentValue.quantity*currentValue.product.price;
-  //figure out what we are passing to the checkout
-});
+    const amount = items.reduce((accumulator, currentValue) => {
+      return accumulator + currentValue.quantity * +currentValue.product.price.slice(1);
+}, 0);
+    console.log("amount", amount)
 
     console.log(" items!!!", items)
     return (
@@ -34,7 +34,9 @@ class Cart extends Component {
             </div>
             )
         }) : <p>Your cart is empty. </p>}
-        <Checkout amount={amount} />
+        <div><h3>Total Amount: {amount}</h3></div>
+        <Link to='/cart'><Checkout amount={amount} OrderId={this.props.cart.id} /></Link>
+
       </div>
     );
   }
