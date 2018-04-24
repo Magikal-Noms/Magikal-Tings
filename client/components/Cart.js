@@ -4,8 +4,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
+<<<<<<< HEAD
 import Checkout from './Checkout';
 
+=======
+import Navbar from './Navbar';
+>>>>>>> styling
 class Cart extends Component {
   componentDidMount(){
     this.props.fetchCart();
@@ -13,13 +17,15 @@ class Cart extends Component {
 
   render() {
 
-    const items = this.props.cart.length ? this.props.cart[0]["line-items"] : null
+    const items = this.props.cart ? this.props.cart["line-items"] : null
     const amount = items.reduce(function(accumulator, currentValue, currentIndex, array) {
   return accumulator + currentValue;
 });
+
     console.log(" items!!!", items)
     return (
       <div>
+        <Navbar />
         {items ? items.map(item => {
           return (
             <div key={item.id}>

@@ -1,6 +1,8 @@
 
 const Sequelize = require('sequelize')
 const db = require('../db')
+const LineItem = require('./lineitem')
+const Product = require('./product')
 
 const Order = db.define('order', {
   shippingAddress: {
@@ -23,6 +25,9 @@ const Order = db.define('order', {
   userId: {
     type: Sequelize.INTEGER,
   }
+},
+{
+  defaultScope:  {include: [{model: LineItem, include: [Product]}]}
 })
 
 

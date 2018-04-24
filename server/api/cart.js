@@ -3,46 +3,45 @@ const {LineItem} = require('../db/models')
 const {Order, Product, User} = require('../db/models')
 module.exports = router
 
-
+router.use( async (req,res,next) => {
+  const [cart] = await Order.findOrCreate({where: {
+    userId: req.user.id,
+    billingAddress: req.user.billingAddress,
+    status: 'pending'
+  }})
+  .catch(next)
+  req.cart = cart
+  req.session.cartId = cart.id
+  next()
+})
 router.get('/', (req,res,next) => {
- const id = req.user ? req.user.id : req.sessionID
- console.log('body', req.user.id)
- Order.findAll({where: {userId: id, status: "pending"}, include: [{model: LineItem, include: [Product]}]})
-       .then(cart => res.json(cart))
-       .catch(next)
+  res.json(req.cart)
+ 
 })
 
-router.post('/products/:productId', (req,res,next) => {
+router.post('/products/:productId', async (req,res,next) => {
 
   const productId = +req.params.productId
-  const id = req.user ? req.user.id : req.sessionID
-  User.findOne({where: {id}})
-    .then(user => Order.findOrCreate({where: {
-      userId: id,
-      billingAddress: user.billingAddress,
-      status: 'pending'
-    }}))
-    .spread((order, wasCreated) =>
 
-      LineItem.findOrCreate({where: {
-        orderId: order.id,
+    await LineItem.findOrCreate({where: {
+        orderId: req.cart.id,
         productId,
-        
-
-    }}))
+    }})
     .spread((lineItem, wasCreated) => {
       if(!wasCreated) {
         lineItem.update({quantity: lineItem.quantity + 1})
       }
     })
-
-    .then(lineItem => res.json(lineItem))
-    .catch(next);
+    .catch(next)
+    await req.cart.reload()
+    res.json(req.cart)
+   
 
 })
 
 router.delete('/:itemId', (req, res, next) => {
   LineItem.destroy({where: {id: +req.params.itemId}})
-  .then(() => res.sendStatus(204))
+  .then(() => req.cart.reload())
+  .then(() => res.json(req.cart))
   .catch(next);
 })
