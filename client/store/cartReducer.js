@@ -26,13 +26,17 @@ export const fetchCart = () => {
   }
 }
 
-export const addProductToCart = (productId) => {
+export const addProductToCart = (productId, history) => {
   return function thunk(dispatch) {
+    console.log("This be happenin'")
     return axios.post(`/api/cart/products/${productId}`, {
         // productId, //Do we need this object param?
         quantity: 1
       })
-      .then(res => dispatch(getCart(res.data)))
+      .then(res => {
+        dispatch(getCart(res.data))
+        history.push('/cart')
+      })
       .catch(err => console.error(`Adding to cart: ${productId} unsuccessful`, err))
   }
 }
