@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
+import Checkout from './Checkout';
 
 class Cart extends Component {
   componentDidMount(){
@@ -13,6 +14,9 @@ class Cart extends Component {
   render() {
 
     const items = this.props.cart.length ? this.props.cart[0]["line-items"] : null
+    const amount = items.reduce(function(accumulator, currentValue, currentIndex, array) {
+  return accumulator + currentValue;
+});
     console.log(" items!!!", items)
     return (
       <div>
@@ -23,6 +27,7 @@ class Cart extends Component {
             </div>
             )
         }) : <p>Your cart is empty. </p>}
+        <Checkout cart={this.props.cart} />
       </div>
     );
   }
