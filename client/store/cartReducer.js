@@ -29,7 +29,7 @@ export const fetchCart = () => {
 export const addProductToCart = (productId) => {
   return function thunk(dispatch) {
     return axios.post(`/api/cart/products/${productId}`, {
-        productId,
+        // productId, //Do we need this object param?
         quantity: 1
       })
       .then(res => dispatch(getCart(res.data)))
@@ -58,7 +58,7 @@ const cartReducer = function(state = null, action) {
     case GET_CART:
       return action.cart
 
-   
+
 
       // case UPDATE_PRODUCT:
       // return state.map(product => (

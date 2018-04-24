@@ -4,19 +4,50 @@ const {Order, Product, User} = require('../db/models')
 module.exports = router
 
 router.use( async (req,res,next) => {
-  const [cart] = await Order.findOrCreate({where: {
-    userId: req.user.id,
-    billingAddress: req.user.billingAddress,
-    status: 'pending'
-  }})
-  .catch(next)
+
+  if (req.session.cartId !== undefined)
+  {
+    const cart = await Order.findOne({
+      where: {
+        id: req.session.cartId,
+        status: 'pending'
+      }
+    }).catch(next)
+  }
+
+  else if (req.user)
+  {
+    const cart = await Order.findOne({
+      where: {
+        userId: req.user.id,
+        status: 'pending'
+      }
+    }).catch(next)
+  }
+
+  else {
+    console.log("******************************************")
+    const cart = await Order.create({
+      status: 'pending'
+    }).catch(next)
+  }
+
+  // const [cart] = await Order.findOrCreate({where: {
+  //   req.session.cartId ? id: req.session.cartId : userId: req.user.id,
+  //   billingAddress: req.user ? req.user.billingAddress : ,
+  //   status: 'pending'
+  // }})
+  // .catch(next)
+  // console.log("*********************************Cart is", cart)
+
   req.cart = cart
+  // console.log("After req.cart is", req.cart)
   req.session.cartId = cart.id
   next()
 })
 router.get('/', (req,res,next) => {
   res.json(req.cart)
- 
+
 })
 
 router.post('/products/:productId', async (req,res,next) => {
@@ -35,7 +66,7 @@ router.post('/products/:productId', async (req,res,next) => {
     .catch(next)
     await req.cart.reload()
     res.json(req.cart)
-   
+
 
 })
 
