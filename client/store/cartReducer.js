@@ -2,28 +2,17 @@ import axios from 'axios';
 
 //Action types
 const GET_CART = 'GET_CART';
-const ADD_TO_CART = 'ADD_TO_CART';
-const DELETE_FROM_CART = 'DELETE_FROM_CART'
+
 
 //Action creators
 const getCart = cart => {
   return {
-    type: 'GET_CART',
+    type: GET_CART,
     cart
   }
 }
-const addToCart = product => {
-  return {
-    type: 'ADD_TO_CART',
-    product
-  }
-}
-const deleteFromCart = lineItem => {
-  return {
-    type: DELETE_FROM_CART,
-    lineItem
-  }
-}
+
+
 
 //thunks
 export const fetchCart = () => {
@@ -43,11 +32,7 @@ export const addProductToCart = (productId) => {
         productId,
         quantity: 1
       })
-      .then(res => {
-        return (dispatch) => {
-          dispatch(addToCart(res.data))
-        }
-      })
+      .then(res => dispatch(getCart(res.data)))
       .catch(err => console.error(`Adding to cart: ${productId} unsuccessful`, err))
   }
 }
@@ -57,11 +42,7 @@ export const deleteProductFromCart = (lineItemId) => {
      axios.delete(`/api/cart/${lineItemId}`, {
       lineItemId
     })
-      .then(res => {
-        return (dispatch) => {
-          dispatch(deleteFromCart(res.data))
-        }
-      })
+      .then(res => dispatch(getCart(res.data)))
       .catch(err => console.error('Deleting from cart unsucessful', err))
   }
 }
@@ -77,11 +58,7 @@ const cartReducer = function(state = null, action) {
     case GET_CART:
       return action.cart
 
-    case ADD_TO_CART:
-      return [...state, action.product]
-
-    case DELETE_FROM_CART:
-      return [state['line-items'].filter(lineItem => lineItem.id !== action.lineItem.id)]
+   
 
       // case UPDATE_PRODUCT:
       // return state.map(product => (

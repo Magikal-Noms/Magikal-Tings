@@ -8,7 +8,7 @@ class AddToCartButton extends Component {
     return (
       <div>
         <Link to='/cart'>
-          <button onClick={addProductToCart(this.props.product.id)}>
+          <button onClick={this.props.addProductToCart}>
             Add To Cart
           </button>
         </Link>
@@ -17,10 +17,10 @@ class AddToCartButton extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    addProductToCart: product => {
-      dispatch(addProductToCart(product));
+    addProductToCart () {
+      dispatch(addProductToCart(ownProps.product.id));
     }
   };
 };
