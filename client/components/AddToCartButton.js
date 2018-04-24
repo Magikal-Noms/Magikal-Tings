@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { addProductToCart } from "../store/cartReducer";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class AddToCartButton extends Component {
   render() {
