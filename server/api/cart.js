@@ -5,9 +5,11 @@ module.exports = router
 
 router.use( async (req,res,next) => {
 
+  let cart;
+
   if (req.session.cartId !== undefined)
   {
-    const cart = await Order.findOne({
+    cart = await Order.findOne({
       where: {
         id: req.session.cartId,
         status: 'pending'
@@ -17,7 +19,7 @@ router.use( async (req,res,next) => {
 
   else if (req.user)
   {
-    const cart = await Order.findOne({
+    cart = await Order.findOne({
       where: {
         userId: req.user.id,
         status: 'pending'
@@ -26,8 +28,7 @@ router.use( async (req,res,next) => {
   }
 
   else {
-    console.log("******************************************")
-    const cart = await Order.create({
+    cart = await Order.create({
       status: 'pending'
     }).catch(next)
   }
