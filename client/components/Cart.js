@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-
-// import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
@@ -13,7 +11,6 @@ class Cart extends Component {
   render() {
 
     const items = this.props.cart ? this.props.cart["line-items"] : null
-    console.log(" items!!!", items)
     return (
       <div>
         {items ? items.map(item => {
@@ -42,5 +39,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
-
-//connect(mapStateToProps)(Cart);
