@@ -23,7 +23,7 @@ h1 {
 
 div .nav-items {
   display: flex;
-  margin-left: 30em
+  margin-left: 25vw;
 }
 
 div .nav-div {
@@ -34,7 +34,7 @@ div .nav-div {
 div .heading {
   text-align:  center;
   font-size: 20px;
-  margin-left: 30em;;
+  margin-left: 20vw;
 
 }
 
