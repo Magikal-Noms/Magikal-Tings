@@ -6,13 +6,13 @@ class ProductCard extends Component {
   render() {
     const product = this.props.product
     return (
-      <div key={product.id}>
-        <h1 className="product-title"> {product.name} </h1>
+      <div key={product.id} className='singleCard'>
+        <h3 className="product-title"> {product.name} </h3>
         <img className="media-object" src={product.picture} />
-        <h2 className="product-price"> Price: {product.price} </h2>
+        <h3 className="product-price"> Price: {product.price} </h3>
         <Link to={`/products/${product.id}`}>
           {" "}
-          <button> {product.name} </button>
+          <button> See Details </button>
         </Link>
       </div>
     );

@@ -16,26 +16,28 @@ class Cart extends Component {
   }
 
   render() {
-
-    const items = this.props.cart ? this.props.cart["line-items"] : null
-    const amount = items.reduce((accumulator, currentValue) => {
+    // let amount;
+    const items = this.props.cart && this.props.cart["line-items"].length ? this.props.cart["line-items"] : null
+    const amount = items ? items.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.quantity * +currentValue.product.price.slice(1);
-}, 0);
-    console.log("amount", amount)
 
-    console.log(" items!!!", items)
+}, 0) : 0
+
     return (
       <div>
         <Navbar />
-        {items ? items.map(item => {
+        {this.props.cart && items ? items.map(item => {
           return (
             <div key={item.id}>
               <CartItem item={item}/>
             </div>
             )
         }) : <p>Your cart is empty. </p>}
-        <div><h3>Total Amount: {amount}</h3></div>
-        <Link to='/cart'><Checkout amount={amount} OrderId={this.props.cart.id} /></Link>
+
+        { this.props.cart && items ? (<div><div><h3>Total Amount: {amount}</h3></div>
+        <Link to='/cart'><Checkout amount={amount} OrderId={this.props.cart.id}/></Link></div>) : null}
+
+
 
       </div>
     );

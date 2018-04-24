@@ -8,7 +8,7 @@ import PAYMENT_SERVER_URL from '../constants/server';
 
 const CURRENCY = 'USD';
 
-// const fromDollarToCent = amount => amount * 100;
+const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
   alert('Payment Successful');
@@ -24,7 +24,7 @@ const onToken = (amount, OrderId) => token => {
       source: token.id,
       currency: CURRENCY,
       OrderId: OrderId,
-      amount: amount
+      amount: fromDollarToCent(amount)
     })
     .then(successPayment)
     .catch(errorPayment);
@@ -34,7 +34,8 @@ const onToken = (amount, OrderId) => token => {
 
 const Checkout = ({ amount, OrderId }) =>
   <StripeCheckout
-    amount={amount}
+    OrderId={OrderId}
+    amount={fromDollarToCent(amount)}
     token={onToken(amount, OrderId)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}

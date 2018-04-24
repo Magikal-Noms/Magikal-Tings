@@ -7,6 +7,7 @@ router.use( async (req,res,next) => {
   const [cart] = await Order.findOrCreate({where: {
     userId: req.user.id,
     billingAddress: req.user.billingAddress,
+    shippingAddress: req.user.shippingAddress,
     status: 'pending'
   }})
   .catch(next)
@@ -16,7 +17,7 @@ router.use( async (req,res,next) => {
 })
 router.get('/', (req,res,next) => {
   res.json(req.cart)
- 
+
 })
 
 router.post('/products/:productId', async (req,res,next) => {
@@ -35,7 +36,7 @@ router.post('/products/:productId', async (req,res,next) => {
     .catch(next)
     await req.cart.reload()
     res.json(req.cart)
-   
+
 
 })
 
