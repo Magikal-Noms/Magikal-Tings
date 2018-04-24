@@ -13,7 +13,7 @@ module.exports = router;
         .then(orders => res.json(orders))
         .catch(next)
     } else {
-      res.json("You are not logged in")
+      res.json(null)
     }
   })
 
@@ -25,7 +25,7 @@ module.exports = router;
         .then(orders => res.json(orders))
         .catch(next);
     } else {
-      res.json("You are not logged in")
+      res.json(null)
     }
   })
 
