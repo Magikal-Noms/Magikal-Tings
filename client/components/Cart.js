@@ -18,8 +18,9 @@ class Cart extends Component {
   render() {
 
     const items = this.props.cart ? this.props.cart["line-items"] : null
-    const amount = items.reduce(function(accumulator, currentValue, currentIndex, array) {
-  return accumulator + currentValue;
+    const amount = items.reduce(function(accumulator, currentValue) {
+  return accumulator + currentValue.quantity*currentValue.product.price;
+  //figure out what we are passing to the checkout
 });
 
     console.log(" items!!!", items)
@@ -33,7 +34,7 @@ class Cart extends Component {
             </div>
             )
         }) : <p>Your cart is empty. </p>}
-        <Checkout cart={this.props.cart} />
+        <Checkout amount={amount} />
       </div>
     );
   }

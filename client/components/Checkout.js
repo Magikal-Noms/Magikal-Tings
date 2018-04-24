@@ -30,8 +30,6 @@ const onToken = (amount, description) => token =>
 
 const Checkout = ({ name, description, amount }) =>
   <StripeCheckout
-    name={name}
-    description={description}
     amount={fromDollarToCent(amount)}
     token={onToken(amount, description)}
     currency={CURRENCY}
