@@ -4,12 +4,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import CartItem from './CartItem';
 import {fetchCart} from '../store'
-<<<<<<< HEAD
+
 import Checkout from './Checkout';
 
-=======
+
 import Navbar from './Navbar';
->>>>>>> styling
+
 class Cart extends Component {
   componentDidMount(){
     this.props.fetchCart();
