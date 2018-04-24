@@ -3,7 +3,8 @@ import {connect} from 'react-redux'
 import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, AllProducts, Product, Category,
- NewProductForm, EditProductForm, Sidebar, Navbar, Cart, AllOrders, Order} from './components'
+ NewProductForm, EditProductForm, Sidebar, Navbar, Cart, AllOrders, Order, App,
+MainPage} from './components'
 import {me} from './store'
 import store from './store'
 import { fetchUserOrders } from './store';
@@ -42,6 +43,7 @@ class Routes extends Component {
    return (
      <Switch>
        {/* Routes placed here are available to all visitors */}
+       <Route exact path='/' component={MainPage} />
        <Route exact path='/products' component={AllProducts} />
        <Route exact path='/products/editproduct' component={EditProductForm} />
        <Route exact path='/login' component={Login} />
