@@ -20,11 +20,13 @@ const Category = require('./category')
 
 Order.belongsTo(User);
 User.hasMany(Order);
+
 Product.belongsTo(Category);
 Category.hasMany(Product);
 
 LineItem.belongsTo(Order);
 Order.hasMany(LineItem);
+
 LineItem.belongsTo(Product);
 Product.hasMany(LineItem);
 

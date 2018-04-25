@@ -58,7 +58,7 @@ class NewProductForm extends Component {
             <input
               name="price"
               type="number"
-              placeholder="Enter a price as an integer"
+              placeholder="Enter a price as 0.00"
             />
           </div>
 
