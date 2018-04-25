@@ -19,7 +19,7 @@ class Cart extends Component {
     // let amount;
     const items = this.props.cart && this.props.cart["line-items"].length ? this.props.cart["line-items"] : null
     const amount = items ? items.reduce((accumulator, currentValue) => {
-      return accumulator + currentValue.quantity * +currentValue.product.price.slice(1);
+      return accumulator + currentValue.quantity * Math.floor(+currentValue.product.price.slice(1));
 
 }, 0) : 0
 
