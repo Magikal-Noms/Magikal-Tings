@@ -8,15 +8,13 @@ const Product = db.define('product', {
     allowNull: false
   },
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL(10, 2),
     allowNull: false,
     validate: {
       min: 0
     },
     get() {
-      //e.g. if we set a magic crystal to be 5034 on the backend it would still be returned to the user as $50.34
-      //or if it's 400093 on the backend it would be returned as $4000.93
-      return '$' + this.getDataValue('price') / 100;
+      return '$' + this.getDataValue('price'); 
     }
   },
   //this is our version of "description", short for "metaphysical properties"
@@ -27,7 +25,7 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER
   },
   picture: {
-    type: Sequelize.STRING,
+    type: Sequelize.TEXT,
     defaultValue: 'https://i.pinimg.com/originals/d7/d5/d8/d7d5d8696a558172808274b154936db7.jpg'
   }
 })

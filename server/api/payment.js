@@ -15,7 +15,7 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
   });
 
-  router.post('/', (req, res) => {
+  router.post('/', (req, res, next) => {
     console.log("REQ BODY", req.body.OrderId)
     const reqBody = {
       source: req.body.source,
@@ -24,11 +24,10 @@ const postStripeCharge = res => (stripeErr, stripeRes) => {
     }
     Order.findById(req.body.OrderId)
     .then(order => order.update({status: 'complete'}))
-    stripe.charges.create(reqBody, postStripeCharge(res))
+    .then(updatedOrder => delete req.session.cartId)
+    .then(() => stripe.charges.create(reqBody, postStripeCharge(res)))
     .then(res => console.log(res))
-    .catch(err => {
-      console.log("****", err)
-    })
+    .catch(next)
 
   });
 

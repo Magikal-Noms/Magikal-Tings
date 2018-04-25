@@ -4,15 +4,32 @@ const {Order, Product, User} = require('../db/models')
 module.exports = router
 
 router.use( async (req,res,next) => {
-  const [cart] = await Order.findOrCreate({where: {
-    userId: req.user.id,
-    billingAddress: req.user.billingAddress,
-    shippingAddress: req.user.shippingAddress,
-    status: 'pending'
-  }})
-  .catch(next)
+
+  let cart
+  const search = {status: 'pending'}
+  if (req.session.cartId) {
+    console.log('here', req.session.cartId)
+    search.id = req.session.cartId
+  }
+  else if (req.user)
+    search.userId = req.user.id
+  if (!req.user && !req.session.cartId)
+    cart = await Order.create(search)
+  else
+    cart = await Order.findOrCreate({ where: search })
+    .then(([foundOrCreatedCart]) => {
+      if (req.user && req.session.cartId && !foundOrCreatedCart.userId)
+        return foundOrCreatedCart
+          .update({userId: req.user.id,
+            billingAddress: req.user.billingAddress,
+            shippingAddress: req.user.shippingAddress})
+      return foundOrCreatedCart
+    })
+    .catch(next)
+
   req.cart = cart
-  req.session.cartId = cart.id
+  if (req.cart)
+    req.session.cartId = cart.id
   next()
 })
 router.get('/', (req,res,next) => {

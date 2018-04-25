@@ -15,10 +15,9 @@ class DeleteCartItemButton extends Component {
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps )=> {
+const mapDispatchToProps = (dispatch, ownProps)=> {
   return {
     deleteProductFromCart () {
-      console.log('will')
       dispatch(deleteProductFromCart(ownProps.item.id));
     }
   };

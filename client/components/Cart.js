@@ -12,12 +12,13 @@ class Cart extends Component {
   }
 
   render() {
-    const items = this.props.cart && this.props.cart["line-items"].length ? this.props.cart["line-items"] : null
+    const items = this.props.cart && this.props.cart["line-items"] && this.props.cart["line-items"].length ? this.props.cart["line-items"] : null
     console.log('items@@', items)
     const amount = items ? items.reduce((accumulator, currentValue) => {
       return accumulator + currentValue.quantity * +currentValue.product.price.slice(1);
 
 }, 0) : 0
+
 
     return (
       <div>
@@ -52,5 +53,3 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart)
-
-//connect(mapStateToProps)(Cart);

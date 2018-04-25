@@ -8,10 +8,7 @@ class Category extends Component {
   render() {
     let categories = this.props.categories;
     let cat = categories.find(cat => cat.name === this.props.match.params.category)
-    console.log('cat', cat)
     let products = this.props.products.filter(product => product.categoryId === cat.id);
-
-    console.log("PRODUCTS", products)
 
     return (
       <div>
@@ -30,7 +27,6 @@ class Category extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log("ownprops", state)
   return {
     products: state.products,
     categories: state.categories
