@@ -9,7 +9,6 @@ import  Sidebar  from "./Sidebar";
 class Order extends Component {
   render() {
     const order = this.props.order;
-    console.log("Order is", order)
     return (
       <div>
         <Sidebar categories={this.props.categories} />

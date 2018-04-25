@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { addProductToCart } from "../store/cartReducer";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 class AddToCartButton extends Component {
   render() {
@@ -18,7 +18,6 @@ class AddToCartButton extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addProductToCart () {
-      console.log("Own props", ownProps)
       dispatch(addProductToCart(ownProps.product.id, ownProps.history));
     }
   };

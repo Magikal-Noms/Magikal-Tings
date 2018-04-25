@@ -3,6 +3,7 @@ const {Product, Category} = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
+
   Product.findAll({include: [Category]})
     .then(products => res.json(products))
     .catch(next)
@@ -25,13 +26,16 @@ router.get('/:productId', (req, res, next) => {
 
 router.post('/addProduct', (req, res, next) => {
   if (req.user.isAdmin)
+  {
     Product.create(req.body)
       .then(createdProduct => res.status(201).json(createdProduct))
       .catch(next)
+  }
 })
 
 router.delete('/:productId', (req, res, next) => {
   if (req.user.isAdmin)
+  {
     Product.destroy({
       where: {
         id: +req.params.productId
@@ -39,10 +43,12 @@ router.delete('/:productId', (req, res, next) => {
     })
       .then(() => res.sendStatus(204))
       .catch(next)
+  }
 })
 
 router.put('/:productId', (req, res, next) => {
   if (req.user.isAdmin)
+  {
     Product.update(req.body, {
       where: {
         id: +req.params.productId
@@ -51,4 +57,5 @@ router.put('/:productId', (req, res, next) => {
     })
       .then(([rows, [product]]) => res.json(product))
       .catch(next)
+  }
 })
