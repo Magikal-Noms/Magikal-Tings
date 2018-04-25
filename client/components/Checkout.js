@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import StripeCheckout from 'react-stripe-checkout';
-
+import ConfirmationPage  from './ConfirmationPage';
 import STRIPE_PUBLISHABLE from '../constants/stripe';
 import PAYMENT_SERVER_URL from '../constants/server';
 
@@ -11,8 +11,21 @@ const CURRENCY = 'USD';
 const fromDollarToCent = amount => amount * 100;
 
 const successPayment = data => {
-  alert('Payment Successful');
+ document.location='/confirmation'
 };
+
+
+// class successPayment extends Component {
+//   render() {
+//     return (
+//       <div>
+//       <Link to='confirmation'> <ConfirmationPage/> </Link>
+//       </div>
+//     );
+//   }
+// }
+
+
 
 const errorPayment = data => {
   alert('Payment Error');
