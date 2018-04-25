@@ -30,7 +30,7 @@ class Cart extends Component {
             )
         }) : <p>Your cart is empty. </p>}
 
-        { this.props.cart && items ? (<div><div><h3>Total Amount: {amount}</h3></div>
+        { this.props.cart && items ? (<div><div><h3 className='total'>Total Amount: {amount}</h3></div>
         <Checkout amount={amount} OrderId={this.props.cart.id}/></div>) : null }
 
       </div>

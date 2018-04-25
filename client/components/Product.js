@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import AddToCartButton from './AddToCartButton';
+import Navbar from './Navbar';
 
 
 class Product extends Component {
@@ -9,6 +10,7 @@ class Product extends Component {
     const product = this.props.product;
     return (
       <div>
+      <Navbar />
         {product && (
           <div key={product.id}>
             <h1> {product.name} </h1>

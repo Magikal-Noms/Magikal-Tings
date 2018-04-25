@@ -12,7 +12,7 @@ export class Sidebar extends Component {
         <ul>
                 {categories.map(cat => {
           return (
-            <div key={cat.id}>
+            <div className='category' key={cat.id}>
               <Link to={`/categories/${cat.name}`}>
               <li className="product-title"> {cat.name} </li>
               </Link>

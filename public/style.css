@@ -81,6 +81,8 @@ div .allProducts {
 .singleCard {
   height: 350px;
   width: 350px;
+    font-family: 'Kurale';
+  color: purple;
 }
 .singleCard img {
   height: 200px;
@@ -96,13 +98,47 @@ a {
 
 label {
   display: block;
-}
+}*/
 
-nav a {
+.category {
   display: inline-block;
   margin: 1em;
+  text-decoration: none;
+  list-style-type: none;
 }
 
+.category a {
+  text-decoration: none;
+  font-family: 'Kurale';
+  color: purple;
+}
+
+.category a:hover {
+  color: pink;
+}
+
+.media-object {
+  height: 500px;
+  width: 500px;
+}
+
+.checkout-pic {
+  height: 200px;
+  width: 300px;
+  margin-left: 200px;
+}
+
+.delete-button {
+  margin-left: 200px;
+}
+
+.total {
+  margin-left: 200px;
+  font-family: 'Kurale';
+  color: purple;
+}
+
+/*
 nav img {
   height: 50px;
   width: 50px;

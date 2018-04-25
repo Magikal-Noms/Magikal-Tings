@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import  Sidebar  from "./Sidebar";
 import  Navbar  from "./Navbar";
 import ProductCard from './ProductCard';
+import AddToCartButton from './AddToCartButton';
 
 class AllProducts extends Component {
   render() {
