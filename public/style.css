@@ -3,9 +3,11 @@ body {
   width: 100vw;
   background-color: rgb(250, 245, 246);
   color: rgb(9, 16, 29) !important;
-  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2 ) ), url('https://images.unsplash.com/photo-1466238196552-044002a786ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f94d9c1b8a8215fb0343322137ac2c72&auto=format&fit=crop&w=1950&q=80'); 
+  background-image: linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2 ) ), url('https://images.unsplash.com/photo-1466238196552-044002a786ce?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=f94d9c1b8a8215fb0343322137ac2c72&auto=format&fit=crop&w=1950&q=80');
   /* background-size: cover; */
-   background-repeat: no-repeat; 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
 
   /* overflow: hidden */
 }
@@ -41,7 +43,7 @@ div .heading {
 button {
   padding: 10px;
   margin: 4px;
-  
+
 }
 
 button .home-div {
@@ -59,6 +61,33 @@ p {
   color: white;
   text-indent: 15vw;
 }
+
+div .allProducts {
+  margin-top: 100px;
+  /*width: 100%;*/
+  display: flex;
+  /*text-align: center;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  /*flex-flow: row-wrap;*/
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 100vw;
+}
+
+.singleCard {
+  height: 350px;
+  width: 350px;
+    font-family: 'Kurale';
+  color: purple;
+}
+.singleCard img {
+  height: 200px;
+  width: 250px;
+}
 /* body {
   font-family: sans-serif;
 }
@@ -69,13 +98,51 @@ a {
 
 label {
   display: block;
-}
+}*/
 
-nav a {
+.category {
   display: inline-block;
   margin: 1em;
+  text-decoration: none;
+  list-style-type: none;
 }
 
+.category a {
+  text-decoration: none;
+  font-family: 'Kurale';
+  color: purple;
+}
+
+.category a:hover {
+  color: pink;
+}
+
+.media-object {
+  height: 500px;
+  width: 500px;
+}
+
+.checkout-pic {
+  height: 200px;
+  width: 300px;
+  margin-left: 200px;
+}
+
+.delete-button {
+  margin-left: 200px;
+}
+
+.total {
+  margin-left: 200px;
+  font-family: 'Kurale';
+  font-size: 25px;
+  color: white;
+}
+
+.product-price {
+  color: pink;
+}
+/*
 nav img {
   height: 50px;
   width: 50px;

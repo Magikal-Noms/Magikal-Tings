@@ -4,7 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import {Login, Signup, UserHome, AllProducts, Product, Category,
  NewProductForm, EditProductForm, Sidebar, Navbar, Cart, AllOrders, Order, App,
-MainPage} from './components'
+MainPage, ConfirmationPage} from './components'
 import {me} from './store'
 import store from './store'
 import { fetchUserOrders } from './store';
@@ -55,6 +55,7 @@ class Routes extends Component {
        <Route exact path='/cart' component={Cart} />
        <Route exact path='/categories/:category' component={Category} />
        <Route exact path='/cart/products/:productId' component={Cart}/>
+       <Route exact path='/confirmation' component={ConfirmationPage}/>
 
        {
          isLoggedIn &&

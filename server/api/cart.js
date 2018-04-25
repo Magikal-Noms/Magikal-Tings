@@ -7,8 +7,10 @@ router.use( async (req,res,next) => {
 
   let cart
   const search = {status: 'pending'}
-  if (req.session.cartId)
+  if (req.session.cartId) {
+    console.log('here', req.session.cartId)
     search.id = req.session.cartId
+  }
   else if (req.user)
     search.userId = req.user.id
   if (!req.user && !req.session.cartId)
@@ -18,7 +20,9 @@ router.use( async (req,res,next) => {
     .then(([foundOrCreatedCart]) => {
       if (req.user && req.session.cartId && !foundOrCreatedCart.userId)
         return foundOrCreatedCart
-          .update({userId: req.user.id})
+          .update({userId: req.user.id,
+            billingAddress: req.user.billingAddress,
+            shippingAddress: req.user.shippingAddress})
       return foundOrCreatedCart
     })
     .catch(next)

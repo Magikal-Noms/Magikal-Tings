@@ -4,15 +4,16 @@ import { connect } from "react-redux";
 import  Sidebar  from "./Sidebar";
 import  Navbar  from "./Navbar";
 import ProductCard from './ProductCard';
+import AddToCartButton from './AddToCartButton';
 
 class AllProducts extends Component {
   render() {
     let products = this.props.products;
     let categories = this.props.categories
     return (
-      <div>
+      <div className='allProducts'>
         <Navbar/>
-        <Sidebar categories={this.props.categories} />
+        <div className='sidebar'><Sidebar categories={this.props.categories} /></div>
         {products.map(product => {
           return (
             <div key={product.id}>
@@ -20,9 +21,6 @@ class AllProducts extends Component {
             </div>
           );
         })}
-
-
-
 
       </div>
     );

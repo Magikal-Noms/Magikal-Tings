@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import  Sidebar  from "./Sidebar";
 import  ProductCard  from "./ProductCard";
+import Navbar from './Navbar';
 
 class Category extends Component {
   render() {
@@ -11,6 +12,7 @@ class Category extends Component {
 
     return (
       <div>
+        <Navbar />
         <Sidebar categories={this.props.categories} />
         {products.map(product => {
           return (

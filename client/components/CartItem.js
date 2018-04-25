@@ -9,7 +9,8 @@ export default class CartItem extends Component {
   render() {
     const item = this.props.item
     return (
-      <div>
+      <div className='checkout'>
+        <img className='checkout-pic' src={item.product.picture} alt=""/>
         <p>Product: {item.product.name}</p>
         <p>Price: {item.product.price}</p>
         <p>Quantity: {item.quantity}</p>

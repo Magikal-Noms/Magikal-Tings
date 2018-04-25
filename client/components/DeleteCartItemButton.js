@@ -7,7 +7,7 @@ class DeleteCartItemButton extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.deleteProductFromCart}>
+        <button className='delete-button' onClick={this.props.deleteProductFromCart}>
             DELETE
         </button>
       </div>

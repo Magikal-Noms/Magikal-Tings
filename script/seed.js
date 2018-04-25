@@ -110,15 +110,22 @@ async function seed() {
   const products = await Promise.all([
     Product.create({
       name: "Rose Quartz",
-      price: 4.80,
+      price: 4800,
       properties: "Rose Quartz is calming and nurturing, " +
         "balances emotions, heal emotional wounds, and rejuvenates the skin.",
       categoryId: 1,
       picture: "https://images-na.ssl-images-amazon.com/images/I/51JyG-6buhL._SL1000_.jpg"
     }),
     Product.create({
+      name: 'Ring',
+      price: 1000,
+      properties: 'The ring from Lord of the Rings',
+      categoryId: 2,
+      picture: 'https://boygeniusreport.files.wordpress.com/2015/02/the-one-ring.jpg?quality=98&strip=all&w=782'
+    }),
+    Product.create({
       name: "Shungite",
-      price: 9.82,
+      price: 9820,
       categoryId: 1,
       properties: "Shungite absorbs negative energies and moves" +
         "them away from the body.  It also purifies water and works to nullify the effects of radiation.",
@@ -127,14 +134,14 @@ async function seed() {
     Product.create({
       name: "Sodalite Necklace",
       categoryId: 2,
-      price: 17.00,
+      price: 1700,
       properties: "Beautiful sodalite necklace.  Great for " +
         "intuition, sixth sense, harmony, balance, inspiration, and creativity.",
       picture: "https://images-na.ssl-images-amazon.com/images/I/71DjbzpaLZL._SL1500_.jpg"
     }),
     Product.create({
       name: "Clary Sage Oil",
-      price: 35.55,
+      price: 3550,
       categoryId: 3,
       properties: "With uses dating back to the Middle Ages, " +
         "Clary Sage essential oil includes relaxing and soothing properties that help with rejuvenation and calming of " +
@@ -144,14 +151,14 @@ async function seed() {
     Product.create({
       name: "Cast Iron Cauldron With Handle",
       categoryId: 4,
-      price: 8.99,
+      price: 8990,
       properties: "ideal for smudging, " +
         "incense burning, rituals, decoration, or candles.  4\" Diameter Handle to Handle, 2.5\" Inside Diameter",
       picture: "https://images-na.ssl-images-amazon.com/images/I/31y7GCNmu9L.jpg"
     }),
     Product.create({
       name: "Triple Goddess Statue",
-      price: 99.95,
+      price: 9995,
       categoryId: 5,
       properties: "11 1/4 inch hand-crafted resin statue " +
         "made from artisans in India",
@@ -160,7 +167,7 @@ async function seed() {
     Product.create({
       name: "Pentacle",
       categoryId: 2,
-      price: 7.30,
+      price: 7300,
       properties: "Pentacle made of natural soapstone.  " +
         "Measures approximately 3 inches in diameter.",
       picture: "https://images-na.ssl-images-amazon.com/images/I/713qqf--XXL._SL1491_.jpg"
@@ -168,7 +175,7 @@ async function seed() {
     Product.create({
       name: "Tree of Life Pentacle Necklace",
       categoryId: 5,
-      price: 26.99,
+      price: 2699,
       properties: "",
       picture: "https://images-na.ssl-images-amazon.com/images/I/61Yx0IUrN3L._UY575_.jpg"
     }),
