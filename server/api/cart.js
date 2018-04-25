@@ -11,7 +11,6 @@ router.use( async (req,res,next) => {
     search.id = req.session.cartId
   else if (req.user)
     search.userId = req.user.id
-  console.log('!!!! ', search)
   if (!req.user && !req.session.cartId)
     cart = await Order.create(search)
   else
@@ -24,42 +23,7 @@ router.use( async (req,res,next) => {
     })
     .catch(next)
 
-
-  // if (req.session.cartId !== undefined)
-  // {
-  //   console.log("In first if")
-  //   console.log(req.session.cartId)
-  //   cart = await Order.findOne({
-  //     where: {
-  //       id: req.session.cartId,
-  //       status: 'pending'
-  //     }
-  //   }).catch(next)
-  // }
-  //
-  // else if (req.user)
-  // {
-  //   console.log("In second if")
-  //   cart = await Order.findOrCreate({
-  //     where: {
-  //       userId: req.user.id,
-  //       status: 'pending'
-  //     }
-  //   }).then(([createdCart]) => createdCart)
-  //     .catch(next)
-  // }
-  //
-  // else {
-  //   console.log("In else")
-  //   cart = await Order.create({
-  //     status: 'pending'
-  //   }).catch(next)
-  // }
-
-  console.log("*********************************Cart is", cart)
-
   req.cart = cart
-  // console.log("After req.cart is", req.cart)
   if (req.cart)
     req.session.cartId = cart.id
   next()

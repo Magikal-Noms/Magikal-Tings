@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import {Link} from 'react-router-dom';
 
 export class Sidebar extends Component {
-  //onCLick of that component will take teh handleClick
 
   render() {
     const categories = this.props.categories

@@ -3,7 +3,6 @@ import axios from 'axios';
 //Action types
 const GET_CART = 'GET_CART';
 
-
 //Action creators
 const getCart = cart => {
   return {
@@ -11,8 +10,6 @@ const getCart = cart => {
     cart
   }
 }
-
-
 
 //thunks
 export const fetchCart = () => {
@@ -28,9 +25,7 @@ export const fetchCart = () => {
 
 export const addProductToCart = (productId, history) => {
   return function thunk(dispatch) {
-    console.log("This be happenin'")
     return axios.post(`/api/cart/products/${productId}`, {
-        // productId, //Do we need this object param?
         quantity: 1
       })
       .then(res => {
@@ -50,24 +45,13 @@ export const deleteProductFromCart = (lineItemId) => {
       .catch(err => console.error('Deleting from cart unsucessful', err))
   }
 }
-// export const editProduct = (id, updatedProduct) => dispatch => {
-//     axios.put(`/api/products/${id}`, updatedProduct)
-//       .then(res => dispatch(update(res.data)))
-//       .catch(err => console.error(`Updating product ${product}`))
-// }
-//reducer
+
 const cartReducer = function(state = null, action) {
 
   switch (action.type) {
     case GET_CART:
       return action.cart
 
-
-
-      // case UPDATE_PRODUCT:
-      // return state.map(product => (
-      //     action.product.id === product.id ? action.product : product
-      // ))
     default:
       return state
   }

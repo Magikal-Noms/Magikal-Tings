@@ -18,7 +18,6 @@ class AddToCartButton extends Component {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     addProductToCart () {
-      console.log("Own props", ownProps)
       dispatch(addProductToCart(ownProps.product.id, ownProps.history));
     }
   };
