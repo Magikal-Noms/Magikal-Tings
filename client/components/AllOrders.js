@@ -17,7 +17,7 @@ class AllOrders extends Component {
             );
           })
           :
-          <h1> You are not logged in </h1>
+          <h1> You have no prior orders </h1>
         }
 
       </div>

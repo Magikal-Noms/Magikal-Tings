@@ -90,8 +90,8 @@
           <file leaf-file-name="AllOrders.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/components/AllOrders.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+                <state relative-caret-position="396">
+                  <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#40#0" expanded="true" />
                   </folding>
@@ -139,7 +139,6 @@
         <option value="$PROJECT_DIR$/script/seed.js" />
         <option value="$PROJECT_DIR$/server/db/models/order.js" />
         <option value="$PROJECT_DIR$/server/api/orders.js" />
-        <option value="$PROJECT_DIR$/client/components/AllOrders.js" />
         <option value="$PROJECT_DIR$/client/store/cartReducer.js" />
         <option value="$PROJECT_DIR$/client/components/AddToCartButton.js" />
         <option value="$PROJECT_DIR$/server/api/cart.js" />
@@ -148,6 +147,7 @@
         <option value="$PROJECT_DIR$/server/db/models/product.js" />
         <option value="$PROJECT_DIR$/server/api/products.js" />
         <option value="$PROJECT_DIR$/server/db/models/user.js" />
+        <option value="$PROJECT_DIR$/client/components/AllOrders.js" />
       </list>
     </option>
   </component>
@@ -300,7 +300,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="60344000" />
+    <option name="totallyTimeSpent" value="60392000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
@@ -633,8 +633,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/components/AllOrders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        <state relative-caret-position="396">
+          <caret line="22" column="12" lean-forward="true" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
