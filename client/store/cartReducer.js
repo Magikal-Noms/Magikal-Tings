@@ -47,7 +47,6 @@ export const deleteProductFromCart = (lineItemId) => {
 }
 
 const cartReducer = function(state = null, action) {
-
   switch (action.type) {
     case GET_CART:
       return action.cart
