@@ -135,9 +135,13 @@ label {
 .total {
   margin-left: 200px;
   font-family: 'Kurale';
-  color: purple;
+  font-size: 25px;
+  color: white;
 }
 
+.product-price {
+  color: pink;
+}
 /*
 nav img {
   height: 50px;

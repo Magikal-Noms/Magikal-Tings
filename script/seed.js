@@ -117,6 +117,13 @@ async function seed() {
       picture: "https://images-na.ssl-images-amazon.com/images/I/51JyG-6buhL._SL1000_.jpg"
     }),
     Product.create({
+      name: 'Ring',
+      price: 1000,
+      properties: 'The ring from Lord of the Rings',
+      categoryId: 2,
+      picture: 'https://boygeniusreport.files.wordpress.com/2015/02/the-one-ring.jpg?quality=98&strip=all&w=782'
+    }),
+    Product.create({
       name: "Shungite",
       price: 9820,
       categoryId: 1,
