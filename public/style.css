@@ -23,9 +23,11 @@ h1 {
 
 div .nav-items {
   display: flex;
-  margin-left: 25vw;
+  margin-left: 2vw;
 }
-
+.cart-item {
+  display: flex;
+}
 div .nav-div {
   display: flex;
   align-items: center

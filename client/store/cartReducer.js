@@ -46,6 +46,18 @@ export const deleteProductFromCart = (lineItemId) => {
       .catch(err => console.error('Deleting from cart unsucessful', err))
   }
 }
+
+export const updatedProduct = (lineItemId, quantity) => {
+  return function thunk(dispatch) {
+    axios.put(`/api/cart/${lineItemId}`, {
+      lineItemId,
+      quantity
+    })
+      .then(res => dispatch(getCart(res.data)))
+      .catch(err => console.error('Updating cart unsuccessful',err))
+  }
+
+}
 // export const editProduct = (id, updatedProduct) => dispatch => {
 //     axios.put(`/api/products/${id}`, updatedProduct)
 //       .then(res => dispatch(update(res.data)))

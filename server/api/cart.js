@@ -39,6 +39,13 @@ router.post('/products/:productId', async (req,res,next) => {
 
 })
 
+router.put('/:itemId', (req,res,next) => {
+    LineItem.findById(req.params.itemId)
+    .then(lineItem => lineItem.update(req.body.quantity))
+    .then(() => re.json(req.cart))
+    .catch(next)
+})
+
 router.delete('/:itemId', (req, res, next) => {
   LineItem.destroy({where: {id: +req.params.itemId}})
   .then(() => req.cart.reload())
