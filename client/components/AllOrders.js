@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import  Sidebar  from "./Sidebar";
+import Navbar from "./Navbar"
 
 class AllOrders extends Component {
   render() {
     let orders = this.props.orders;
     return (
       <div>
+      <Navbar/>
         <Sidebar categories={this.props.categories} />
         {orders ? orders.map(order => {
             return (
